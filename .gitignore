@@ -22,3 +22,5 @@ Makefile
 docker-compose.yml
 .editorconfig
 storage/docker
+docker/nginx/ssl
+public_html
