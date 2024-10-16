@@ -1,0 +1,15 @@
+FROM php:8.3-fpm
+
+RUN apt-get update && apt-get install -y libmcrypt-dev mariadb-client libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev libmagickwand-dev ffmpeg \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install exif \
+    && docker-php-ext-install intl \
+    && pecl install mcrypt \
+    && pecl install redis \
+    && pecl install imagick \
+    && docker-php-ext-enable imagick \
+    && docker-php-ext-enable mcrypt redis
+
+WORKDIR /var/www
+
+CMD ["php-fpm"]

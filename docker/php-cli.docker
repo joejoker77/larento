@@ -1,0 +1,16 @@
+FROM php:8.3-cli
+
+RUN apt-get update && apt-get install -y libmcrypt-dev libzip-dev libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev mariadb-client wget unzip \
+    && docker-php-ext-install pdo_mysql pcntl zip \
+    && docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp \
+    && docker-php-ext-install gd \
+    && docker-php-ext-install exif \
+    && pecl install mcrypt \
+    && pecl install redis \
+    && docker-php-ext-enable mcrypt redis
+
+RUN wget https://getcomposer.org/installer -O - -q | php -- --version=2.2.6 --install-dir=/bin --filename=composer --quiet
+
+ENV COMPOSER_ALLOW_SUPERUSER 1
+
+WORKDIR /var/www

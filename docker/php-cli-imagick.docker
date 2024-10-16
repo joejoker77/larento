@@ -1,0 +1,17 @@
+FROM php:8.3-cli
+
+RUN apt-get update && apt-get install -y libmagickwand-dev libmcrypt-dev libzip-dev libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev mariadb-client wget unzip \
+    && docker-php-ext-install pdo_mysql pcntl zip \
+    && docker-php-ext-install exif \
+    && docker-php-ext-install intl \
+    && pecl install mcrypt \
+    && pecl install redis \
+    && pecl install imagick \
+    && docker-php-ext-enable imagick \
+    && docker-php-ext-enable mcrypt redis
+
+RUN wget https://getcomposer.org/installer -O - -q | php -- --version=2.2.6 --install-dir=/bin --filename=composer --quiet
+
+ENV COMPOSER_ALLOW_SUPERUSER 1
+
+WORKDIR /var/www
