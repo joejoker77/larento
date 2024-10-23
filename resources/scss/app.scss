@@ -839,16 +839,16 @@ section#catalog {
                 rotate: 0deg;
             }
             &.hit {
-                background: url("../../storage/app/public/images/inner pages/label_hit.webp") center/cover no-repeat;
+                background: url("../../storage/images/inner pages/label_hit.webp") center/cover no-repeat;
                 display: block;
             }
             &.new {
-                background: url("../../storage/app/public/images/inner pages/label_new.webp") center/cover no-repeat;
+                background: url("../../storage/images/inner pages/label_new.webp") center/cover no-repeat;
                 display: block;
             }
             &.new.hit {
                 height: toRem(100px);
-                background: url("https://localhost:3000/storage/app/public/images/inner pages/label_new.webp") top center no-repeat, url("https://localhost:3000/storage/app/public/images/inner pages/label_hit.webp") bottom center no-repeat;
+                background: url("../../storage/images/inner pages/label_new.webp") top center no-repeat, url("../../storage/images/inner pages/label_hit.webp") bottom center no-repeat;
                 background-size: 100%;
                 top: toRem(-32px);
                 right: toRem(10px);
@@ -2155,7 +2155,7 @@ p.label-input-limit {
         }
 
         &.hit {
-            background: url("../../storage/app/public/images/inner pages/label_hit.webp") center/cover no-repeat;
+            background: url("../../storage/images/inner pages/label_hit.webp") center/cover no-repeat;
             display: block;
             top: toRem(-10px);
             right: toRem(10px);
@@ -2166,7 +2166,7 @@ p.label-input-limit {
             }
         }
         &.new {
-            background: url("../../storage/app/public/images/inner pages/label_new.webp") center/cover no-repeat;
+            background: url("../../storage/images/inner pages/label_new.webp") center/cover no-repeat;
             display: block;
             top: toRem(-10px);
             right: toRem(10px);
@@ -2179,7 +2179,7 @@ p.label-input-limit {
         }
         &.new.hit {
             height: toRem(100px);
-            background: url("../../storage/app/public/images/inner pages/label_new.webp") top center no-repeat, url("../../storage/app/public/images/inner pages/label_hit.webp") bottom center no-repeat;
+            background: url("../../storage/images/inner pages/label_new.webp") top center no-repeat, url("../../storage/images/inner pages/label_hit.webp") bottom center no-repeat;
             background-size: 100%;
             top: toRem(-32px);
             right: toRem(20px);
