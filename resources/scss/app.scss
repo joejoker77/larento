@@ -1294,7 +1294,7 @@ section#ourWork {
             &:after {
                 display: block;
                 position: absolute;
-                content: url("../../storage/app/public/images/home/Vector9.png");
+                content: url("../../storage/images/home/Vector9.png");
                 width: toRem(126px);
                 height: toRem(25px);
                 right: toRem(-60px);
@@ -1507,21 +1507,21 @@ section#ourWork {
         &.line {
             .form-check-label {
                 &:before {
-                    background: #f7f4f2 url("../../storage/app/public/images/home/type1.jpg") top center no-repeat;
+                    background: #f7f4f2 url("../../storage/images/home/type1.jpg") top center no-repeat;
                 }
             }
         }
         &.angle {
             .form-check-label {
                 &:before {
-                    background: #f7f4f2 url("../../storage/app/public/images/home/type2.jpg") top center no-repeat;
+                    background: #f7f4f2 url("../../storage/images/home/type2.jpg") top center no-repeat;
                 }
             }
         }
         &.u-shaped {
             .form-check-label {
                 &:before {
-                    background: #f7f4f2 url("../../storage/app/public/images/home/type3.jpg") top center no-repeat;
+                    background: #f7f4f2 url("../../storage/images/home/type3.jpg") top center no-repeat;
                 }
             }
         }
@@ -1529,7 +1529,7 @@ section#ourWork {
             margin-right: 0;
             .form-check-label {
                 &:before {
-                    background: #f7f4f2 url("../../storage/app/public/images/home/type4.jpg") top center no-repeat;
+                    background: #f7f4f2 url("../../storage/images/home/type4.jpg") top center no-repeat;
                 }
             }
         }
