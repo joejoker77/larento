@@ -1,11 +1,10 @@
 import './bootstrap';
 import Choices from "choices.js";
-import Swal from "/node_modules/sweetalert2/src/sweetalert2";
-import button from "/node_modules/bootstrap/js/src/button";
-import Sortable from "/node_modules/sortablejs";
-import {Datepicker, DateRangePicker} from "/node_modules/vanillajs-datepicker";
-import ru from "/node_modules/vanillajs-datepicker/js/i18n/locales/ru.js";
-import Chart from "/node_modules/chart.js/auto";
+import Swal from "sweetalert2";
+import Sortable from "sortablejs";
+import {Datepicker, DateRangePicker} from "vanillajs-datepicker";
+import ru from "vanillajs-datepicker/locales/ru";
+import Chart from "chart.js/auto";
 
 Object.assign(Datepicker.locales, ru);
 
@@ -67,7 +66,7 @@ if (mainCategorySelect) {
         formData.append('id', catId);
 
         axios.post('/admin/shop/products/get-attributes-form', formData).then(function (response) {
-            if (response.status === 200 && response.statusText === 'OK') {
+            if (response.status === 200) {
                 if (attributesBlock) {
                     attributesBlock.innerHTML     = response.data;
                     attributesBlock.style.display = 'block';
@@ -94,7 +93,7 @@ if (createMenuButton) {
         });
 
         axios.post('/admin/ajax/get-form-menu').then(function (response) {
-            if (response.status === 200 && response.statusText === 'OK') {
+            if (response.status === 200) {
                 myModal.querySelector('.modal-body').innerHTML = response.data;
                 modal.show();
             }
@@ -119,7 +118,7 @@ if (editMenuButton.length > 0) {
             formData.append('menu_id', this.dataset.menuId);
 
             axios.post('/admin/ajax/get-form-menu', formData).then(function (response) {
-                if (response.status === 200 && response.statusText === 'OK') {
+                if (response.status === 200) {
                     myModal.querySelector('.modal-body').innerHTML = response.data;
                     modal.show();
                 }
@@ -183,7 +182,7 @@ if (addGroupItems) {
     let newGroupCount = 0;
     addGroupItems.addEventListener('click', function (event) {
         axios.post('/admin/shop/filters/add-group').then(function (response) {
-            if (response.status === 200 && response.statusText === 'OK') {
+            if (response.status === 200) {
                 const html = new DOMParser().parseFromString(response.data, 'text/html');
                 newGroupCount++;
                 html.querySelector('.accordion-header').id = 'heading-new-'+newGroupCount;
@@ -549,7 +548,7 @@ class MenuManage extends HTMLElement
 
         if (event.code !== 'ArrowDown' && event.code !== 'ArrowUp' && event.keyCode !== 13) {
             axios.post('/admin/navigations/find',formData).then(function (response) {
-                if (response.status === 200 && response.statusText === 'OK') {
+                if (response.status === 200) {
                     const answer = response.data;
                     if (Array.isArray(answer) && answer.length > 0) {
                         self.renderAnswer(answer.slice(0, 10), event);
@@ -716,7 +715,7 @@ if (addNavItems.length > 0) {
             formData.append('menu_id', this.dataset.menuId);
 
             axios.post('/admin/ajax/get-form-menu-items', formData).then(function (response) {
-                if (response.status === 200 && response.statusText === 'OK') {
+                if (response.status === 200) {
                     itemsContainer.innerHTML = response.data;
                     itemsContainer.parentElement.initElements();
                     if (itemsContainer.querySelector('#draggable').childElementCount > 0) {
@@ -1004,7 +1003,7 @@ class InputTags extends HTMLElement
             formData.append('meta.description', meta.description);
 
             axios.post('/admin/shop/tags/create-ajax', formData).then(function (response) {
-                if (response.status === 200 && response.statusText === 'OK') {
+                if (response.status === 200) {
                     const answer = response.data;
                     if (answer.success) {
                         lostChoices.push({value: answer.id, label:event.target.value});
@@ -1076,7 +1075,7 @@ class Images extends HTMLElement
                     formData.append('post_id', postId);
 
                 axios.post('/admin/photos/get-photos', formData).then(function (response) {
-                    if (response.status === 200 && response.statusText === 'OK') {
+                    if (response.status === 200) {
                         const answer = response.data;
                         if (answer.error) {
                             console.log(response);

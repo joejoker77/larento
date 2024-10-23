@@ -2,9 +2,9 @@
 @extends('layouts.index')
 @section('content')
     <div id="productPage">
-        <div class="row mb-5">
+        <div class="row mb-3 mb-lg-5">
         @if(!$product->photos->isEmpty())
-            <div class="col-lg-6">
+            <div class="col-md-6 px-0 px-md-2">
                 <main-gallery>
                     <div class="swiper full-swiper">
                         <div class="swiper-wrapper">
@@ -16,8 +16,8 @@
                             @endforeach
                         </div>
                         @if($product->photos()->count() > 1)
-                            <div class="swiper-button swiper-button-next"></div>
-                            <div class="swiper-button swiper-button-prev"></div>
+                            <div class="swiper-button swiper-button-next d-none d-lg-block"></div>
+                            <div class="swiper-button swiper-button-prev d-none d-lg-block"></div>
                         @endif
                         <div class="gallery-controls">
                             <div class="full-screen-button">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     @if($product->photos()->count() > 1)
-                        <div class="swiper thumbs-swiper">
+                        <div class="swiper thumbs-swiper d-none d-md-block">
                             <div class="swiper-wrapper">
                                 @foreach($product->photos as $photo)
                                     <div class="swiper-slide thumb">
@@ -40,11 +40,11 @@
                 </main-gallery>
             </div>
         @endif
-        <div class="col-lg-6 product_offer">
-            <h1 class="d-none d-lg-flex justify-content-between align-items-baseline">
+        <div class="col-md-6 product_offer">
+            <h1 class="d-flex justify-content-between align-items-baseline">
                 {{$product->name}}
             </h1>
-            <div class="product_offer-buttons d-flex flex-nowrap gap-3">
+            <div class="product_offer-buttons d-flex flex-column flex-xl-row flex-nowrap gap-3">
                 <button type="button" name="js-modal" class="btn btn-brown" value="Вызов змерщика" data-product-name="{{$product->name}}">Вызов замерщика</button>
                 <button type="button" name="js-modal" class="btn btn-outline-brown" value="Консультация менеджера" data-product-name="{{$product->name}}">Консультация менеджера</button>
             </div>
@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="product_offer-block">
-                <table>
+                <table class="d-none d-lg-table">
                     <tr>
                         <td>Дизайн проект</td>
                         <td>Рассрочка</td>
@@ -73,6 +73,12 @@
                         <td>Гарантия</td>
                     </tr>
                 </table>
+                <div class="d-flex flex-column d-lg-none">
+                    <div class="product_offer-block-item">Дизайн проект</div>
+                    <div class="product_offer-block-item">Рассрочка</div>
+                    <div class="product_offer-block-item">Замер</div>
+                    <div class="product_offer-block-item">Гарантия</div>
+                </div>
             </div>
         </div>
     </div>
@@ -138,7 +144,7 @@
                 Полное описание
             </button>
         </div>
-        <div class="col-md-6 ps-4">
+        <div class="col-md-6 ps-lg-4">
             <h6 class="h6">Оставить комментарий</h6>
             <form action="{{ route('shop.add-comment', $product) }}" method="POST" id="sendComment">
                 @csrf

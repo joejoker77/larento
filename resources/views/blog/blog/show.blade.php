@@ -2,24 +2,20 @@
 @extends('layouts.index')
 @section('content')
     <div class="blog post" id="postPage">
-        <div class="row mb-5">
-            <h1 class="h1">
-                {{$post->title}}
-            </h1>
+        <h1 class="h1">{{$post->title}}</h1>
+        <div class="d-flex flex-column flex-lg-row mb-0 mb-lg-5">
             <div class="col-lg-3">
-                <aside class="w-100 sticky-top">
+                <aside class="sticky-top">
                     <x-menu handler="blogMenu" />
                 </aside>
             </div>
-            <div class="w-75">
-                <div class="col-lg-12">
-                    @if($post->photos->isNotEmpty())
-                        <div class="post_photo-main">
-                            <img src="{{ $post->photos->first()->getPhoto('large') }}" alt="{{$post->photos->first()->alt_tag}}">
-                        </div>
-                    @endif
-                </div>
-                <div class="col-lg-12">
+            <div class="col-lg-9">
+                @if($post->photos->isNotEmpty())
+                    <div class="post_photo-main">
+                        <img src="{{ $post->photos->first()->getPhoto('large') }}" alt="{{$post->photos->first()->alt_tag}}">
+                    </div>
+                @endif
+                <div class="post_description mb-5">
                     {!! $post->content !!}
                 </div>
             </div>

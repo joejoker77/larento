@@ -3,17 +3,18 @@
 
 use App\Entities\Shop\Attribute;
 use App\Entities\Shop\Category;
+$currentCategoryId = $currentCategoryId ?? request('currentCategoryId');
 @endphp
 @if($filter)
-    <div class="col-lg-3">
-        <aside class="top-0 position-sticky">
+    <div class="col-lg-3 filter-wrapper">
+        <aside>
             <div id="beginFilter">
                 <button class="btn btn-brown d-lg-none" id="closeFilter">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
             @if(request()->get('attributes') || request()->get('tags') || request()->get('categories') || request()->get('colors') || request()->get('price'))
-                <a href="{{route('shop.filter')}}" type="button"
+                <a href="{{route('shop.filter').'?currentCategoryId='.request('currentCategoryId')}}" type="button"
                    class="btn btn-sm btn-brown text-white fs-5 w-100 mb-3">Сбросить фильтр</a>
             @endif
             <form action="{{ route('shop.filter') }}" method="get" class="form-filter">

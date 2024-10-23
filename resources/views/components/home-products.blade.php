@@ -1,12 +1,12 @@
 @php /** @var $products App\Entities\Shop\Product[] */ @endphp
 
 @if($products->isNotEmpty())
-    <section id="catalog">
+    <section id="catalog" class="px-md-2 px-lg-0">
         <div class="catalog-start d-flex flex-wrap justify-content-between">
             @php /** @var $product App\Entities\Shop\Product */ @endphp
             @foreach($products as $product)
                 <div class="catalog-start_item position-relative">
-                    <div class="label @if($product->isHit())hit @elseif($product->isNew())new @endif"></div>
+                    <div class="label @if($product->isHit())hit @endif @if($product->isNew())new @endif"></div>
                     <div class="catalog-start_item-img position-relative">
                         <img src="{{ $product->getMainImage('thumb') }}" alt="пример товара">
                         <a href="{{ route('catalog.index', product_path($product->category, $product)) }}" class="stretched-link"></a>

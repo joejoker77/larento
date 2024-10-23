@@ -26,8 +26,8 @@ use App\Entities\Site\Promotions\Promotion;
         <div class="swiper-pagination"></div>
 
         <!-- If we need navigation buttons -->
-        <div class="swiper-button swiper-button-prev">‹</div>
-        <div class="swiper-button swiper-button-next">›</div>
+        <div class="swiper-button swiper-button-prev d-none d-lg-block">‹</div>
+        <div class="swiper-button swiper-button-next d-none d-lg-block">›</div>
     </div>
 @endif
 

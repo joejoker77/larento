@@ -1,5 +1,4 @@
 @props(['items', 'default_classes', 'li_classes', 'dropDown', 'subMenuClasses'])
-
 @foreach($items as $item)
     @if(isset($item->item_path))
         @php
@@ -22,8 +21,12 @@
                 {{ $item->link_text ?? $item->title }}
             </a>
             @if($item->children->isNotEmpty())
+                @php
+                    $liSubClass = !empty($subMenuClasses) ?  $classes . ' sub-link' : $classes;
+                    $linkSubClass = !empty($subMenuClasses) ? $liClasses . ' sub-item' : $liClasses;
+                @endphp
                 <ul class="{{ $subMenuClasses }} @if($dropDown == 'true')dropdown-menu @endif">
-                    <x-nav-item :items="$item->children" default_classes="{{$classes}}" li_classes="{{ $liClasses }}" />
+                    <x-nav-item :items="$item->children" default_classes="{{$liSubClass}}" li_classes="{{$linkSubClass}}" />
                 </ul>
             @endif
         </li>

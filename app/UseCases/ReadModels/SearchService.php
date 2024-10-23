@@ -69,7 +69,7 @@ class SearchService
         });
 
         $category = Category::find($request->get('currentCategoryId'));
-        $catIDs   = Category::ancestorsAndSelf($category->id)->pluck('id');
+        $catIDs   = $category ? Category::ancestorsAndSelf($category->id)->pluck('id') : null;
         $query    = Value::select('product_id', DB::raw('count(`product_id`) as cnt'));
 
         array_map(function ($value, $id) use($query) {
@@ -88,18 +88,24 @@ class SearchService
 
         $query->groupBy('product_id')->having('cnt', '>', count($values) - 1);
 
-        dump($query->toSQL());
-        dump($query->getBindings());
-
         $totalCount = $query->distinct('product_id')->count();
-        $items = $totalCount > 0 ?
-            Product::active()->with(['photos', 'values', 'category', 'tags', 'categories'])
+
+        if ($totalCount > 0 && $catIDs) {
+            $items = Product::active()->with(['photos', 'values', 'category', 'tags', 'categories', 'category.parent'])
                 ->whereIn('id', array_unique($query->pluck('product_id')->toArray()))
                 ->whereIn('category_id', $catIDs)
                 ->orderBy(new Expression('FIELD(id,' . implode(',', array_unique($query->pluck('product_id')->toArray())) . ')'))
                 ->offset(($page-1) * $perPage)
-                ->limit($perPage)->get() :
-            [];
+                ->limit($perPage)->get();
+        } elseif ($totalCount > 0 && !$catIDs) {
+            $items = Product::active()->with(['photos', 'values', 'category', 'tags', 'categories', 'category.parent'])
+                ->whereIn('id', array_unique($query->pluck('product_id')->toArray()))
+                ->orderBy(new Expression('FIELD(id,' . implode(',', array_unique($query->pluck('product_id')->toArray())) . ')'))
+                ->offset(($page-1) * $perPage)
+                ->limit($perPage)->get();
+        } else {
+            $items = [];
+        }
 
         $pagination = $totalCount > 0 ?
             new LengthAwarePaginator($items, $totalCount, $perPage, $page) :

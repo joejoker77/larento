@@ -4,7 +4,7 @@
     <x-main-banner />
     <x-main-page-products />
     <section id="mainText">
-        <div class="d-flex flex-row">
+        <div class="d-flex flex-column-reverse flex-md-row">
             <div class="main-text">
                 @isset($settings)
                     <h1 class="decor-head">{{ $settings['main_head'] }}</h1>
@@ -165,7 +165,7 @@
 {{--    </section>--}}
     <section id="schemeWork" class="scheme-work">
         <h3>схема работы</h3>
-        <div class="scheme-work_content d-flex flex-row justify-content-between">
+        <div class="scheme-work_content d-flex flex-column flex-lg-row justify-content-between">
             <div class="scheme-work_item d-flex flex-column">
                 <div class="scheme-work_item-icon">
                     <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -174,7 +174,7 @@
                 </div>
                 <div class="scheme-work_text">
                     <h4>Обращение в компанию</h4>
-                    <p>Отличный планшет, недорогой, мощный, игрушки летают, заряд держит долго, зарядка в комплекте быстрая</p>
+                    <p>Обратиться в компанию Larento можно через сайт, по телефону или c визитом в офис. Мы всегда рады новым клиентам.</p>
                 </div>
             </div>
             <div class="scheme-work_item d-flex flex-column">
@@ -188,7 +188,7 @@
                 </div>
                 <div class="scheme-work_text">
                     <h4>Разработка индивидуального дизайн проекта</h4>
-                    <p>Наши дизайнеры учитывают множество неочивидных факторов при работе над проектом, что гарантирует на сто процентов все поелания наших клиентов.</p>
+                    <p>Наши дизайнеры учитывают множество неочивидных факторов при работе над проектом, что гарантирует на сто процентов все пожелания наших клиентов.</p>
                 </div>
             </div>
             <div class="scheme-work_item d-flex flex-column">
@@ -202,7 +202,7 @@
                 </div>
                 <div class="scheme-work_text">
                     <h4>Заключение договора</h4>
-                    <p>После согласия дизайна проекта, с клиентом заключается договор на поставку комплектующих и оказания услуг.</p>
+                    <p>После согласования дизайн проекта, с клиентом заключается договор на поставку комплектующих и оказания услуг.</p>
                 </div>
             </div>
             <div class="scheme-work_item d-flex flex-column">
@@ -224,14 +224,14 @@
                 </div>
                 <div class="scheme-work_text">
                     <h4>Доставка и сборка кухонного гарнитура</h4>
-                    <p>Доставка и сборка всех комплектующих, осуществляется после подписания клиентом договора купли продажи и оплаты всех товаров и услуг на 100%</p>
+                    <p>Доставка и сборка всех комплектующих, осуществляется после подписания клиентом договора купли продажи и оплаты всех товаров и услуг на 50% или 100%</p>
                 </div>
             </div>
         </div>
     </section>
     <section id="calcKitchen" class="calc">
-        <div class="calc_container d-flex flex-row justify-content-between">
-            <div class="calc_image">
+        <div class="calc_container d-flex flex-row justify-content-between gap-3 gap-xl-5">
+            <div class="calc_image d-none d-lg-block">
                 <img src="{{asset('storage/images/home/Rectangle70.jpg')}}" alt="изображение конфигуратора">
             </div>
             <div class="calc_form">
@@ -243,32 +243,34 @@
                     <input type="hidden" name="subject" value="Узнать примерную стоимость кухни">
                     <input type="hidden" name="product_name" value="Конфигуратор">
                     <div class="custom-label">Выберите конфигурацию:</div>
-                    <div class="form-check form-check-inline with-img line">
-                        <input class="form-check-input" type="radio" name="CalcForm[type]" id="type1" checked="" value="1">
-                        <label class="form-check-label align-self-end" for="type1">
-                            <span>Прямая</span>
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline with-img angle">
-                        <input class="form-check-input" type="radio" name="CalcForm[type]" id="type2" value="2">
-                        <label class="form-check-label align-self-end" for="type2">
-                            <span>Угловая</span>
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline with-img u-shaped">
-                        <input class="form-check-input" type="radio" name="CalcForm[type]" id="type3" value="3">
-                        <label class="form-check-label align-self-end" for="type3">
-                            <span>П-образная</span>
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline with-img island">
-                        <input class="form-check-input" type="radio" name="CalcForm[type]" id="type4" value="4">
-                        <label class="form-check-label align-self-end" for="type4">
-                            <span>с островом</span>
-                        </label>
+                    <div class="d-flex flex-row flex-wrap flex-md-nowrap justify-content-between">
+                        <div class="form-check form-check-inline with-img line flex-grow-1">
+                            <input class="form-check-input" type="radio" name="CalcForm[type]" id="type1" checked="" value="1">
+                            <label class="form-check-label align-self-end" for="type1">
+                                <span>Прямая</span>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline with-img angle flex-grow-1">
+                            <input class="form-check-input" type="radio" name="CalcForm[type]" id="type2" value="2">
+                            <label class="form-check-label align-self-end" for="type2">
+                                <span>Угловая</span>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline with-img u-shaped flex-grow-1">
+                            <input class="form-check-input" type="radio" name="CalcForm[type]" id="type3" value="3">
+                            <label class="form-check-label align-self-end" for="type3">
+                                <span>П-образная</span>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline with-img island flex-grow-1">
+                            <input class="form-check-input" type="radio" name="CalcForm[type]" id="type4" value="4">
+                            <label class="form-check-label align-self-end" for="type4">
+                                <span>с островом</span>
+                            </label>
+                        </div>
                     </div>
                     <div class="custom-label">Выберите материал:</div>
-                    <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-row flex-wrap flex-lg-nowrap justify-content-center gap-1">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="CalcForm[material]" id="ldsp" value="1">
                             <label class="form-check-label" for="ldsp">ЛДСП</label>
@@ -295,12 +297,12 @@
                         </div>
                     </div>
                     <div class="labels d-flex flex-row justify-content-between">
-                        <div class="col-7">
+                        <div class="col-12 col-lg-7">
                             <label class="custom-label" for="size_a">
                                 Укажите размеры в метрах:<span class="text-danger">*</span>
                             </label>
                         </div>
-                        <div class="col-5">
+                        <div class="d-none d-lg-block col-5">
                             <label class="custom-label">Верхний ряд:</label>
                         </div>
                     </div>
@@ -317,7 +319,10 @@
                             </div>
                         </div>
 
-                        <div class="col-md-5 top-row p-0">
+                        <div class="col-md-5 top-row">
+                            <div class="d-block d-lg-none col-12">
+                                <label class="custom-label">Верхний ряд:</label>
+                            </div>
                             <div class="on-off">
                                 <input type="radio" name="CalcForm[topRow]" id="top_row_yes" value="on" checked>
                                 <label for="top_row_yes" class="label1">
@@ -327,20 +332,6 @@
                                 <label for="top_row_no" class="label2">
                                     <span>Нет</span>
                                 </label>
-                            </div>
-                        </div>
-                        <div class="d-flex d-none">
-                            <div class="col-sm-6 col-md-3 mb-2 pe-3">
-                                <label class="custom-label" for="calcform-name">
-                                    Контактные данные:<span class="text-danger">*</span>
-                                </label>
-                                <input type="text" id="calcform-name" class="form-control" name="CalcForm[name]" placeholder="Представьтесь" aria-required="true">
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <label class="custom-label invisible" for="user_phone">
-                                    Телефон<span class="text-danger">*</span>
-                                </label>
-                                <input type="text" id="user_phone" class="form-control" name="CalcForm[phone]" placeholder="+7(___) ___-__-__" aria-required="true">
                             </div>
                         </div>
                     </div>

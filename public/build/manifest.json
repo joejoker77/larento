@@ -3,11 +3,6 @@
     "file": "assets/bootstrap-B9trcNYe.js",
     "name": "bootstrap"
   },
-  "resources/css/app.css": {
-    "file": "assets/app-CH3mCXWe.css",
-    "src": "resources/css/app.css",
-    "isEntry": true
-  },
   "resources/fonts/BasisGrotesquePro-Black.eot": {
     "file": "assets/BasisGrotesquePro-Black-D6rzQYOa.eot",
     "src": "resources/fonts/BasisGrotesquePro-Black.eot"
@@ -531,8 +526,13 @@
     "isEntry": true
   },
   "resources/scss/app.scss": {
-    "file": "assets/app-5yD3dg3W.css",
+    "file": "assets/app-BWYA3tuw.css",
     "src": "resources/scss/app.scss",
+    "isEntry": true
+  },
+  "resources/scss/fonts.scss": {
+    "file": "assets/fonts-Cz1LeMN_.css",
+    "src": "resources/scss/fonts.scss",
     "isEntry": true
   },
   "storage/app/public/images/home/Vector9.png": {

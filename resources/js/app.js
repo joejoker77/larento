@@ -32,12 +32,38 @@ const mainBanner          = document.getElementById('mainBanner'),
     modalButton           = document.querySelectorAll('[name="js-modal"]'),
     userPhone             = document.getElementById('userPhone'),
     configForm            = document.getElementById('configForm'),
-    orderDesignForm       = document.getElementById("orderDesignForm");
+    orderDesignForm       = document.getElementById("orderDesignForm"),
+    menuMobile            = document.getElementById('mainMenuMobile'),
+    sortFilterControlsBtn = document.querySelectorAll('.sort-controls button'),
+    popOverLinkBig        = document.querySelector('.popover-link');
+
+let mediaTillLG = window.matchMedia('(max-width: 992px)');
 
 modal.addEventListener('hidden.bs.modal', event => {
     modal.querySelector('.modal-body').innerHTML = '';
     modal.querySelector('.modal-title').innerHTML = '';
 });
+
+if (mediaTillLG.matches && popoverLink) {
+    popoverLink.setAttribute('data-bs-offset', '0,-172');
+}
+
+if (sortFilterControlsBtn.length > 0) {
+    const filterBlock = document.querySelector('.filter-wrapper'),
+        sortBlock     = document.querySelector('.product-sort');
+
+    sortFilterControlsBtn.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.stopPropagation();
+            event.preventDefault();
+            if (button.textContent === 'Фильтр') {
+                filterBlock.classList.toggle('show');
+            } else {
+                sortBlock.classList.toggle('show');
+            }
+        });
+    });
+}
 
 if (userPhone) {
     IMask(userPhone, {mask:[{mask: '+{7} 000 000 00 00'},{mask: /^\s*@?\s*$/}]});
@@ -269,7 +295,10 @@ if (popoverLink) {
 }
 
 if (swiperScrollbar) {
-    if (Number.parseInt(window.getComputedStyle(swiperScrollbar, null).height) === 650) {
+
+    const commentCount = document.querySelectorAll('.commentary').length;
+
+    if (commentCount > 3 && mediaTillLG.matches) {
         document.querySelector('.swiper-scrollbar-vertical').classList.remove('d-none');
         new Swiper(swiperScrollbar, {
             direction: 'vertical',
@@ -288,11 +317,29 @@ if (swiperScrollbar) {
     }
 }
 
+if (menuMobile && mediaTillLG.matches) {
+    const collapseContent = menuMobile.querySelector('.navbar-collapse');
+
+    collapseContent.addEventListener('shown.bs.collapse', event => {
+        document.body.classList.add('blocked');
+    });
+
+    collapseContent.addEventListener('hide.bs.collapse', event => {
+        document.body.classList.remove('blocked');
+    });
+}
+
 if (mainBanner) {
+    const textBlocks = mainBanner.querySelectorAll('.text-block');
+    if (mediaTillLG.matches) {
+        textBlocks.forEach(function (textBlock) {
+            textBlock.removeAttribute('style');
+        });
+    }
     new Swiper(mainBanner, {
         loop:true,
         height:640,
-        autoplay: {delay: 5000},
+      //  autoplay: {delay: 5000},
         navigation: {nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev'},
         pagination: {el:'.swiper-pagination',clickable: true},
         modules: [Navigation, Autoplay, Pagination]
@@ -349,12 +396,39 @@ if (promotionModule) {
 
     new Swiper(swiperElement, {
         loop: true,
-        height: 254,
+        width: 1400,
         slidesPerView: 5,
         spaceBetween: 16,
+        autoHeight: true,
         autoplay: {delay: 5000},
         navigation: {nextEl: nextButtonPromotion, prevEl: prevButtonPromotion},
-        modules: [Navigation, Autoplay]
+        modules: [Navigation, Autoplay],
+        breakpoints: {
+            360: {
+                slidesPerView: 1,
+                width: 267,
+                spaceBetween: 8,
+                loop: false
+            },
+            520: {
+                slidesPerView: 2,
+                width: 534,
+                loop: false
+            },
+            990: {
+                slidesPerView: 3,
+                width: 950,
+                loop: false
+            },
+            1024: {
+                slidesPerView: 4,
+                width: 984
+            },
+            1400: {
+                slidesPerView: 5,
+                width: 1400
+            }
+        }
     });
 }
 
@@ -410,36 +484,20 @@ if(collapseFilterItemBnt.length > 0) {
         });
     });
 
-    if(window.matchMedia("(max-width: 992px)").matches) {
-        const showFilterButton = document.getElementById('showFilter'),
-            closeFilter        = document.getElementById('closeFilter'),
-            filter             = document.querySelector('.row.products .col-lg-3');
+    if(mediaTillLG.matches) {
+        const closeFilter = document.getElementById('closeFilter'),
+            filter        = document.querySelector('.filter-wrapper');
 
-        let scrollTop = 0;
-
-        if (showFilterButton) {
-            showFilterButton.addEventListener('click', function (event) {
-                event.preventDefault();
-
-                filter.classList.toggle('show');
-                console.log(window.scrollY);
-                if (filter.classList.contains('show')) {
-                    window.scrollTo(0,scrollTop);
-                    scrollTop = window.scrollY;
-                }
-            });
-        }
         if (closeFilter) {
             closeFilter.addEventListener('click', function (event) {
                 event.preventDefault();
+                console.log('check');
                 filter.classList.remove('show');
-                window.scrollTo(0, scrollTop);
-                scrollTop = 0;
+                window.scrollTo(0, 0);
             })
         }
     }
 }
-
 
 if (formFilter) {
     formFilter.querySelectorAll('input').forEach(function (elInput) {
@@ -640,3 +698,31 @@ if(configForm) {
         return false;
     });
 }
+
+function scrollObserver() {
+    const options = {
+        rootMargin: '0px',
+        threshold: 1
+    }
+    let previousY      = 0,
+        previousRatio  = 0;
+    const callback = function (entries) {
+        entries.forEach(entry => {
+            const currentY = entry.boundingClientRect.y,
+                currentRatio = entry.intersectionRatio;
+            if (currentY < previousY) {
+                document.querySelector('.header-bottom').classList.add('position-fixed', 'top-0');
+            } else {
+                document.querySelector('.header-bottom').classList.remove('position-fixed', 'top-0');
+            }
+            previousY = currentY;
+            previousRatio = currentRatio;
+        });
+    }
+
+    const observer = new IntersectionObserver(callback, options);
+
+    observer.observe(document.querySelector('.header-top'));
+}
+
+scrollObserver();

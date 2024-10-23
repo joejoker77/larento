@@ -6,18 +6,21 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
 @extends('layouts.index')
 @section('content')
     <div class="blog portfolio">
-        <div class="row">
-            <h1 class="h1">{{ $category->title }}</h1>
+        <h1 class="h1">{{ $category->title }}</h1>
+        <div class="d-flex flex-column flex-lg-row">
             <div class="col-lg-3">
-                <aside class="w-100 sticky-top">
+                <aside class="sticky-top">
                     <x-menu handler="blogMenu" />
                 </aside>
             </div>
-            <div class="w-75">
+            <div class="col-lg-9">
                 {!! $category->description !!}
                 @php /** @var $post App\Entities\Blog\Post */ @endphp
                 @foreach($posts->sortByDesc('id') as $post)
-                    <div class="d-flex flex-nowrap justify-content-between pb-5 mb-5 border-bottom portfolio_item">
+                    <div class="d-flex flex-nowrap flex-column flex-md-row justify-content-between pb-2 mb-3 pb-lg-5 mb-lg-5 border-bottom portfolio_item">
+                        <h3 class="h3 d-block d-md-none">
+                            <a href="{{ route('blog.index', post_path($post->category, $post)) }}">{{ $post->title }}</a>
+                        </h3>
                         <main-gallery class="col-md-7" data-size-replace="large">
                             <div class="swiper full-swiper">
                                 <div class="swiper-wrapper">
@@ -29,8 +32,8 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                                     @endforeach
                                 </div>
                                 @if($post->photos->count() > 1)
-                                    <div class="swiper-button swiper-button-next"></div>
-                                    <div class="swiper-button swiper-button-prev"></div>
+                                    <div class="swiper-button swiper-button-next d-none d-lg-block"></div>
+                                    <div class="swiper-button swiper-button-prev d-none d-lg-block"></div>
                                 @endif
                                 <div class="gallery-controls">
                                     <div class="full-screen-button">
@@ -40,7 +43,7 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                                 </div>
                             </div>
                             @if($post->photos->count() > 1)
-                                <div class="swiper thumbs-swiper">
+                                <div class="swiper thumbs-swiper d-none d-lg-block">
                                     <div class="swiper-wrapper">
                                         @foreach($post->photos as $photo)
                                             <div class="swiper-slide thumb">
@@ -52,7 +55,9 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                             @endif
                         </main-gallery>
                         <div class="info col-md-5">
-                            <h3 class="h3"><a href="{{ route('blog.index', post_path($post->category, $post)) }}">{{ $post->title }}</a></h3>
+                            <h3 class="h3 d-none d-md-block">
+                                <a href="{{ route('blog.index', post_path($post->category, $post)) }}">{{ $post->title }}</a>
+                            </h3>
                             <div class="description">{!! $post->content !!}</div>
                             <div class="text-end text-date">Дата публикации: {{ $intlFormatter->format($post->created_at) }}</div>
                         </div>

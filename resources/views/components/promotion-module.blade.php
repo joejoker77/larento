@@ -13,8 +13,8 @@ $category      = \App\Entities\Blog\Category::scoped(['status'=>\App\Entities\Bl
     <div id="promotionModule">
         <div class="promotion_module-head-buttons d-flex flex-nowrap justify-content-between">
             <h3 class="h3">Акции компании</h3>
-            <div class="swiper-button swiper-button-prev">‹</div>
-            <div class="swiper-button swiper-button-next">›</div>
+            <div class="swiper-button swiper-button-prev d-none d-lg-block">‹</div>
+            <div class="swiper-button swiper-button-next d-none d-lg-block">›</div>
         </div>
         <div class="swiper">
             <div class="swiper-wrapper">
@@ -30,7 +30,7 @@ $category      = \App\Entities\Blog\Category::scoped(['status'=>\App\Entities\Bl
                         <div class="promotion_item-info">
                             {!! trim(mb_substr($promotion->description_three, 0, mb_strpos($promotion->description_three, '<hr />'))) !!}
                             @php $date = new DateTime($promotion->expiration_end); @endphp
-                            <p class="small-text">*Акция действует @if($promotion->expiration_end) до {{ $intlFormatter->format($date) }} года @else бессрочно @endif</p>
+                            <p class="small-text mt-auto">*Акция действует @if($promotion->expiration_end) до {{ $intlFormatter->format($date) }} года @else бессрочно @endif</p>
                         </div>
                         @if($category)
                             <a href="{{ route('blog.index', post_path($category, null)) }}#{{$promotion->slug}}" target="_blank" class="stretched-link"></a>

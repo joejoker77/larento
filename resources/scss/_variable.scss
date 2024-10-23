@@ -1,10 +1,13 @@
+@import "bootstrap";
+
 $container-max-widths: (
-    sm: 540px,
-    md: 720px,
-    lg: 960px,
-    xl: 1270px,
+    sm: 520px,
+    md: 990px,
+    lg: 1024px,
+    xl: 1200px,
     xxl: 1440px
 );
+
 $rating-min-value: 0 !default;
 $rating-max-value: 5 !default;
 $rating-steps-value: .25 !default;

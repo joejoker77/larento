@@ -2,12 +2,11 @@
 <html lang="ru">
 <head>
     <link rel="canonical" href="{{ url()->current() }}">
-    {!! Meta::toHtml() !!}
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/build/manifest.json">
-
+    {!! Meta::toHtml() !!}
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
@@ -17,18 +16,18 @@
 <div class="container p-0 site-wrapper @if(Route::current()->getName() === 'home') main @endif">
     <header>
         <div class="header-top d-flex flex-row justify-content-between">
-            <div class="left d-flex flex-row justify-content-start align-items-center">
+            <div class="left d-flex flex-row justify-content-between justify-content-lg-start align-items-center">
                 <div class="header-top_company-address">{{ $settings['address'] ?? env('APP_ADDRESS') }}</div>
                 <div class="separator"></div>
                 <div class="header-top_clock-working">{{ $settings['work_time'] ?? env('APP_WORK_TIME') }}</div>
             </div>
-            <div class="right">
+            <div class="right d-none d-lg-block">
                 <nav>
                     <x-menu handler="topMenu" menuClass="nav"/>
                 </nav>
             </div>
         </div>
-        <div class="header-bottom d-flex flex-row justify-content-between">
+        <div class="header-bottom d-flex flex-row justify-content-between container p-0">
             <div class="logo">
                 @if(Route::current()->getName() !== 'home')
                     <a href="{{ route('home') }}" class="logo-link">
@@ -53,14 +52,24 @@
                     </a>
                 @endif
             </div>
-            <x-menu handler="mainMenu" menuClass="navbar navbar-expand-lg" template="components.mega-menu" menuId="mainMenu"/>
-            <div class="company-phones">
-                @isset($settings)
-                    @foreach(format_phones($settings['phones']) as $phone)
-                        <a href="{{$phone['link']}}" class="link-phone">{{ $phone['phone'] }}</a>
-                    @endforeach
-                @endisset
+            <div class="d-none d-lg-block">
+                <x-menu handler="mainMenu" menuClass="navbar navbar-expand-lg" template="components.mega-menu" menuId="mainMenu"/>
             </div>
+            <div class="d-block d-lg-none">
+                <x-menu :settings="$settings" handler="mainMobile" menuClass="navbar navbar-expand-lg" template="components.mega-menu" menuId="mainMenuMobile"/>
+            </div>
+            @isset($settings)
+                <button class="btn d-lg-none collapse-phone" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForMobile" aria-controls="collapseForMobile" aria-expanded="false">
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.033 10.4518L11.5965 10.8857C11.5965 10.8857 10.559 11.9173 7.72713 9.10148C4.89528 6.28571 5.93275 5.25413 5.93275 5.25413L6.2076 4.98082C6.88476 4.30755 6.94859 3.22662 6.35777 2.4375L5.14937 0.823282C4.41818 -0.153413 3.00529 -0.282434 2.16722 0.550875L0.663021 2.04654C0.247469 2.45973 -0.0310038 2.99535 0.00276786 3.58954C0.0891616 5.10966 0.776928 8.38033 4.61472 12.1963C8.68451 16.243 12.5032 16.4038 14.0648 16.2582C14.5587 16.2122 14.9882 15.9607 15.3344 15.6164L16.6958 14.2629C17.6147 13.3491 17.3556 11.7826 16.1798 11.1435L14.3489 10.1482C13.5769 9.72852 12.6364 9.85176 12.033 10.4518Z" fill="#7D7C7A"/>
+                    </svg>
+                </button>
+                <div class="company-phones collapse d-lg-inline-flex" id="collapseForMobile">
+                    @foreach(format_phones($settings['phones']) as $phone)
+                        <a href="{{$phone['link']}}" class="link-phone d-block d-lg-inline">{{ $phone['phone'] }}</a>
+                    @endforeach
+                </div>
+            @endisset
         </div>
     </header>
     <div id="content">
@@ -73,7 +82,7 @@
         </section>
     </div>
     <footer class="d-flex flex-column">
-        <div class="footer-top d-flex flex-row">
+        <div class="footer-top d-flex flex-column flex-lg-row">
             <div class="logo">
                 @if(Route::current()->getName() !== 'home')
                     <a href="{{ route('home') }}" class="logo-link">
@@ -105,7 +114,7 @@
                     </div>
                 </nav>
             </div>
-            <div class="footer-top_contacts ms-auto">
+            <div class="footer-top_contacts mx-auto ms-lg-auto me-lg-0">
                 <div class="footer-top_company-phones">
                     @isset($settings)
                         @foreach(format_phones($settings['phones']) as $phone)
@@ -114,10 +123,10 @@
                     @endisset
                 </div>
                 <div class="footer-top_clock-working">{{ $settings['work_time'] ?? env('APP_WORK_TIME') }}</div>
-                <div class="footer-top_email"><a href="mailto:info@larento.ru">{{ $settings['emails'][0] ?? env('APP_WORK_TIME') }}</a></div>
+                <div class="footer-top_email"><a href="mailto:info@larento.ru">{{ $settings['emails'][0] ?? env('MAIL_FROM_ADDRESS') }}</a></div>
             </div>
         </div>
-        <div class="footer-bottom d-flex flex-row justify-content-between">
+        <div class="footer-bottom d-flex flex-column flex-lg-row justify-content-between">
             <div class="footer-bottom_company-address">{{ $settings['address'] ?? env('APP_ADDRESS') }}</div>
             <div class="footer-bottom_privacy-links">
                 <a href="#">политика конфиденциальности</a>
@@ -144,7 +153,7 @@
     </div>
 </div>
 
-<div id="scrollUp" class="position-fixed">
+<div id="scrollUp" class="position-fixed d-none d-lg-flex">
     <span class="material-symbols-outlined">stat_minus_3</span>
 </div>
 @vite('resources/js/app.js')

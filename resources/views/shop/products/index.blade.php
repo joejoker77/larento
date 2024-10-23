@@ -37,9 +37,13 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
         @else
         <div class="d-flex justify-content-between flex-nowrap">
             <x-filter position="left" currentCategoryId="{{ $category->id }}" />
-            <div class="category-contents w-75">
+            <div class="category-contents">
                 @if($products->isNotEmpty())
-                    <div class="row product-sort mb-3 px-2">
+                    <div class="sort-controls d-flex flex-row d-lg-none">
+                        <button class="btn btn-outline-secondary text-capitalize" type="button">Сортировка</button>
+                        <button class="btn btn-outline-secondary text-capitalize" type="button">Фильтр</button>
+                    </div>
+                    <div class="row product-sort mb-3 px-2 d-none d-lg-flex">
                         <div class="col-6">
                             <div class="form-group input-group-sm">
                                 <select id="inputSort" onchange="location = this.value;" class="form-control" name="sort" aria-label="Сортировка">
@@ -64,7 +68,7 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                         </div>
                     </div>
                     @foreach ($products->chunk(3) as $chunk)
-                        <div class="row ps-2 mb-5">
+                        <div class="row px-0 px-md-2 mb-0 mb-md-3 mb-lg-5">
                             @php /** @var $product Product */ @endphp
                             @foreach($chunk as $product)
                                 <div class="product_item col-md-4 position-relative">
@@ -126,7 +130,7 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                             <div class="commentaries_block d-flex flex-column swiper-wrapper">
                                 @php /** @var App\Entities\Shop\Comment $comment */ @endphp
                                 @foreach($commentaries as $comment)
-                                    <div class="commentary d-flex flex-row justify-content-start swiper-slide">
+                                    <div class="commentary d-flex flex-column flex-md-row justify-content-start swiper-slide">
                                         <div class="commentary_info">
                                             <div class="commentary_info-user">
                                                 <img src="{{ asset('/storage/images/home/avatar-svgrepo-com 1.png') }}" alt="user avatar">
@@ -146,7 +150,7 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                                                 {{ $intlFormatter->format(new DateTime($comment->created_at)) }}
                                             </div>
                                         </div>
-                                        <div class="commentary-content w-100 d-flex flex-column justify-content-end ps-4 pb-4">
+                                        <div class="commentary-content w-100 d-flex flex-column justify-content-end ps-0 ps-lg-4 pb-0 pb-lg-4">
                                             {{ $comment->comment }}
                                         </div>
                                     </div>

@@ -4,8 +4,8 @@
         <h2 class="decor-head-two">наши работы</h2>
         <p class="text-center">Мы надеемся, что наше портфолио вдохновит вас на новые идеи и поможет вам лучше понять, что предлагает компания Larento. Мебель, которую мы создаем, становится символом качества и надежности.</p>
     </div>
-    <div class="our-work_container d-flex flex-row justify-content-between gap-4 px-4 mb-5">
-        <div class="our-work_left d-flex flex-column gap-4">
+    <div class="our-work_container d-flex flex-column flex-md-row justify-content-between gap-2 gap-md-4 px-md-4 mb-md-5">
+        <div class="our-work_left d-flex flex-column gap-2 gap-md-4">
             @php /** @var $post App\Entities\Blog\Post */ @endphp
             @foreach($posts->slice(0, 2) as $key => $post)
                 <div class="our-work_top">
@@ -32,7 +32,7 @@
                 <a href="{{ route('blog.index', post_path($post->category, $post)) }}" class="stretched-link"></a>
             </div>
         @endforeach
-        <div class="our-work_left d-flex flex-column gap-4">
+        <div class="our-work_left d-flex flex-column gap-2 gap-md-4">
             @foreach($posts->slice(3, 2) as $key => $post)
                 <div class="our-work_top">
                     <div class="our-work_image">
