@@ -234,7 +234,7 @@ if (modalButton.length > 0) {
 
                 function submitForm(formElement, formData) {
                     axios.post(formElement.action, formData).then(function (response) {
-                        if (response.status === 200 && response.statusText === 'OK') {
+                        if (response.status === 200) {
                             modal.querySelector('.modal-body').innerHTML = '<p>Спасибо за вашу заявку.</p><p>Наши менеджеры свяжутся с вами в ближайшее время.</p>';
 
                             setTimeout(function () {
