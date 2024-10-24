@@ -3,6 +3,7 @@
 /public/hot
 /public/storage
 /public/build
+/public/build/*
 /storage/*.key
 /vendor
 .env
@@ -24,3 +25,4 @@ docker-compose.yml
 storage/docker
 docker/nginx/ssl
 public_html
+package-lock.json
