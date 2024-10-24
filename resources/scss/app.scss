@@ -1933,6 +1933,26 @@ footer {
                     }
                 }
             }
+            .product-sort {
+                @include media-breakpoint-down(lg) {
+                    height: 0;
+                    opacity: 0;
+                    transition: all .4s ease-in-out;
+                    &.show {
+                        height: toRem(36px);
+                        opacity: 1;
+                    }
+                }
+                @include media-breakpoint-down(sm) {
+                    height: 0;
+                    opacity: 0;
+                    transition: all .4s ease-in-out;
+                    &.show {
+                        height: toRem(71px);
+                        opacity: 1;
+                    }
+                }
+            }
         }
 
         width: 49%;
@@ -2104,6 +2124,13 @@ button {
     border-radius: 0;
     padding: toRem(10px) toRem(38px) toRem(6px) toRem(10px);
     color: #786B61;
+
+    @include media-breakpoint-down(md) {
+        max-width: toRem(200px);
+    }
+    @include media-breakpoint-down(sm) {
+        max-width: none;
+    }
 }
 p.label-input-limit {
     font-size: 11pt;
@@ -2123,6 +2150,12 @@ p.label-input-limit {
         padding: 0;
         margin-left: toRem(20px);
         font-size: 11pt;
+
+        @include media-breakpoint-down(md) {
+            margin-left: toRem(8px);
+        }
+
+
         &:hover, &.active {
             text-decoration: none;
             color: #242424;
@@ -2194,6 +2227,10 @@ p.label-input-limit {
         height: toRem(200px);
         overflow: hidden;
         margin-bottom: toRem(7px);
+
+        @include media-breakpoint-up(sm) {
+            height: toRem(245px);
+        }
 
         @include media-breakpoint-up(xl) {
             height: toRem(245px);
@@ -2338,6 +2375,8 @@ p.label-input-limit {
         @include media-breakpoint-up(lg) {
             width: 50%;
         }
+
+
     }
     &-image {
         width: 100%;
@@ -3812,5 +3851,15 @@ aside {
     }
     100% {
         opacity: 0;
+    }
+}
+@include media-breakpoint-up(sm) {
+    .input-group-sm {
+        position: relative;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        justify-content: space-between;
+        width: 100%;
     }
 }

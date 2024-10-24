@@ -34,8 +34,7 @@ const mainBanner          = document.getElementById('mainBanner'),
     configForm            = document.getElementById('configForm'),
     orderDesignForm       = document.getElementById("orderDesignForm"),
     menuMobile            = document.getElementById('mainMenuMobile'),
-    sortFilterControlsBtn = document.querySelectorAll('.sort-controls button'),
-    popOverLinkBig        = document.querySelector('.popover-link');
+    sortFilterControlsBtn = document.querySelectorAll('.sort-controls button');
 
 let mediaTillLG = window.matchMedia('(max-width: 992px)');
 
@@ -126,7 +125,7 @@ function getVirtualForm()
     inputUserName.classList.add('form-control');
     inputUserName.setAttribute('placeholder', 'Укажите ваше имя');
     inputUserName.setAttribute('autocomplete', 'off');
-    inputUserName.setAttribute('pattern', '^[а-яё\\s]+$');
+    inputUserName.setAttribute('pattern', '^[а-яёА-ЯЁ\\s]+$');
     inputUserName.setAttribute('minlength', '3');
     inputUserName.setAttribute('maxlength', '30');
 
@@ -163,10 +162,31 @@ function getVirtualForm()
 }
 
 if (modalButton.length > 0) {
-    const formElement         =  getVirtualForm();
+
     let subject, product_name = null;
+
+    function submitForm(formElement, formData) {
+        axios.post(formElement.action, formData).then(function (response) {
+            if (response.status === 200) {
+                modal.querySelector('.modal-body').innerHTML = '<p>Спасибо за вашу заявку.</p><p>Наши менеджеры свяжутся с вами в ближайшее время.</p>';
+
+                setTimeout(function () {
+                    modalWindow.hide();
+                    formElement.remove();
+                    modal.querySelector('.modal-body').innerHTML = '';
+                    modal.querySelector('.modal-title').innerHTML = '';
+                }, 4000);
+            }
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+
     modalButton.forEach(function (button) {
         button.addEventListener('click', function (event) {
+
+            const formElement =  getVirtualForm();
+
             subject      = event.target.tagName === 'INPUT' ? event.target.value : event.target.textContent;
             product_name = event.target.tagName === 'INPUT' ?
                 button.closest('.info').querySelector('h3.h3').textContent :
@@ -178,7 +198,7 @@ if (modalButton.length > 0) {
             modal.querySelector('.modal-title').append(title.toUpperCase());
             modalWindow.show();
 
-            formElement.addEventListener('submit',function (event) {
+            function submitEvent (event) {
                 event.preventDefault();
                 event.stopPropagation();
 
@@ -230,28 +250,14 @@ if (modalButton.length > 0) {
                 if(userNameInput.validity.valid && userPhoneInput.value.length === 16) {
                     modal.querySelector('.modal-body').innerHTML = '<div class="loader"></div>';
                     submitForm(formElement, formData);
+                } else {
+                    submitEvent.removeEventListener();
+                    return false;
                 }
-
-                function submitForm(formElement, formData) {
-                    axios.post(formElement.action, formData).then(function (response) {
-                        if (response.status === 200) {
-                            modal.querySelector('.modal-body').innerHTML = '<p>Спасибо за вашу заявку.</p><p>Наши менеджеры свяжутся с вами в ближайшее время.</p>';
-
-                            setTimeout(function () {
-                                modalWindow.hide();
-                                formElement.querySelector('input[name=user_phone]').value = '';
-                                formElement.querySelector('input[name=user_name]').value  = '';
-                                modal.querySelector('.modal-body').innerHTML = '';
-                                modal.querySelector('.modal-title').innerHTML = '';
-                            }, 4000);
-                        }
-                    }).catch(function (error) {
-                        console.error(error);
-                    });
-                }
-
+                submitEvent.removeEventListener();
                 return false;
-            });
+            }
+            formElement.addEventListener('submit',submitEvent);
         });
     });
 }

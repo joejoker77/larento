@@ -54,4 +54,10 @@ class OrderController extends Controller
         $order->setNote($request->get('note'));
         return back()->with('success', 'Заметка успешно сохранена');
     }
+
+    public function destroy(Order $order):RedirectResponse
+    {
+        $order->delete();
+        return back()->with('success', 'Заказ удален');
+    }
 }

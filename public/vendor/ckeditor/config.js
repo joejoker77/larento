@@ -18,9 +18,8 @@ CKEDITOR.editorConfig = function( config ) {
 
     config.versionCheck = false;
 
-
-    config.contentsCss = '/build/assets/fonts.css';
-    config.font_names = 'Basis Grotesque Pro;Cera Pro;Kidentosca;Unbounded;';
+    config.contentsCss = '/vendor/fonts.css';
+    config.font_names  = 'Basis Grotesque Pro;Cera Pro;Kidentosca;Unbounded;';
 
     config.extraPlugins = 'fontweight';
     config.fontWeight   = '100;300;500;700;900'

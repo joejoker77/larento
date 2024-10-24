@@ -43,21 +43,17 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                         <button class="btn btn-outline-secondary text-capitalize" type="button">Сортировка</button>
                         <button class="btn btn-outline-secondary text-capitalize" type="button">Фильтр</button>
                     </div>
-                    <div class="row product-sort mb-3 px-2 d-none d-lg-flex">
-                        <div class="col-6">
-                            <div class="form-group input-group-sm">
-                                <select id="inputSort" onchange="location = this.value;" class="form-control" name="sort" aria-label="Сортировка">
-                                    <option>Сортировать по</option>
-                                    <option value="{{request()->fullUrlWithQuery(['sort' => 'name'])}}" @if(request('sort') == 'name') selected @endif>Имени А-Я</option>
-                                    <option value="{{request()->fullUrlWithQuery(['sort' => '-name'])}}" @if(request('sort') == '-name') selected @endif>Имени Я-А</option>
-                                    <option value="{{request()->fullUrlWithQuery(['sort' => '-hit'])}}" @if(request('sort') == '-hit') selected @endif>Сначала хиты продаж</option>
-                                    <option value="{{request()->fullUrlWithQuery(['sort' => '-new'])}}" @if(request('sort') == '-new') selected @endif>Сначала новинки</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6 text-end pe-0">
-                            <div class="d-flex">
-                                <p class="ms-auto label-input-limit">Показать по:</p>
+                    <div class="row product-sort mb-3 px-2">
+                        <div class="form-group input-group-sm">
+                            <select id="inputSort" onchange="location = this.value;" class="form-control mx-auto mx-sm-0" name="sort" aria-label="Сортировка">
+                                <option>Сортировать по</option>
+                                <option value="{{request()->fullUrlWithQuery(['sort' => 'name'])}}" @if(request('sort') == 'name') selected @endif>Имени А-Я</option>
+                                <option value="{{request()->fullUrlWithQuery(['sort' => '-name'])}}" @if(request('sort') == '-name') selected @endif>Имени Я-А</option>
+                                <option value="{{request()->fullUrlWithQuery(['sort' => '-hit'])}}" @if(request('sort') == '-hit') selected @endif>Сначала хиты продаж</option>
+                                <option value="{{request()->fullUrlWithQuery(['sort' => '-new'])}}" @if(request('sort') == '-new') selected @endif>Сначала новинки</option>
+                            </select>
+                            <div class="d-flex justify-content-between justify-content-md-end">
+                                <p class="ms-md-auto label-input-limit">Показать по:</p>
                                 <div id="inputLimit">
                                     <a href="{{request()->fullUrlWithQuery(['per-page' => '6'])}}" @if(request('per-page') == '6') class="active" @endif>6</a>
                                     <a href="{{request()->fullUrlWithQuery(['per-page' => $settings['default_pagination']])}}" @if(request('per-page') == $settings['default_pagination'] or !request('per-page')) class="active" @endif>{{$settings['default_pagination']}}</a>
@@ -78,7 +74,7 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                                             @foreach($product->photos as $photo)
                                                 <div class="product_item-image swiper-slide">
                                                     <a href="{{ route('catalog.index',product_path($category, $product)) }}">
-                                                        <img src="{{ $photo->getPhoto('thumb') }}" alt="{{ $photo->alt_tag }}">
+                                                        <img src="{{ $photo->getPhoto('medium') }}" alt="{{ $photo->alt_tag }}">
                                                     </a>
                                                 </div>
                                             @endforeach
