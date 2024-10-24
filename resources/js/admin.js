@@ -1,6 +1,6 @@
 import './bootstrap';
 import Choices from "choices.js";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2-neutral";
 import Sortable from "sortablejs";
 import {Datepicker, DateRangePicker} from "vanillajs-datepicker";
 import ru from "vanillajs-datepicker/locales/ru";

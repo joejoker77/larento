@@ -500,7 +500,7 @@
     "src": "resources/fonts/Unbounded-SemiBold.woff2"
   },
   "resources/js/admin.js": {
-    "file": "assets/admin-Dw-hZB9a.js",
+    "file": "assets/admin-B-yIz5cA.js",
     "name": "admin",
     "src": "resources/js/admin.js",
     "isEntry": true,
@@ -509,7 +509,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-1qYmbTFk.js",
+    "file": "assets/app-CI6W3HLF.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -521,12 +521,12 @@
     ]
   },
   "resources/scss/admin.scss": {
-    "file": "assets/admin-BA0EW01E.css",
+    "file": "assets/admin-H2P3WApY.css",
     "src": "resources/scss/admin.scss",
     "isEntry": true
   },
   "resources/scss/app.scss": {
-    "file": "assets/app-BWYA3tuw.css",
+    "file": "assets/app--8v7JYAu.css",
     "src": "resources/scss/app.scss",
     "isEntry": true
   },
@@ -539,32 +539,8 @@
     "file": "assets/Vector9-Ck5VxlvQ.png",
     "src": "storage/app/public/images/home/Vector9.png"
   },
-  "storage/app/public/images/home/type1.jpg": {
-    "file": "assets/type1-7rWhGCDM.jpg",
-    "src": "storage/app/public/images/home/type1.jpg"
-  },
-  "storage/app/public/images/home/type2.jpg": {
-    "file": "assets/type2-BHrIsc5R.jpg",
-    "src": "storage/app/public/images/home/type2.jpg"
-  },
-  "storage/app/public/images/home/type3.jpg": {
-    "file": "assets/type3-B_0y2aUa.jpg",
-    "src": "storage/app/public/images/home/type3.jpg"
-  },
-  "storage/app/public/images/home/type4.jpg": {
-    "file": "assets/type4-BI65sTu_.jpg",
-    "src": "storage/app/public/images/home/type4.jpg"
-  },
   "storage/app/public/images/inner pages/comment-bg.webp": {
     "file": "assets/comment-bg-ScnZzDBG.webp",
     "src": "storage/app/public/images/inner pages/comment-bg.webp"
-  },
-  "storage/app/public/images/inner pages/label_hit.webp": {
-    "file": "assets/label_hit-DKxYRtEJ.webp",
-    "src": "storage/app/public/images/inner pages/label_hit.webp"
-  },
-  "storage/app/public/images/inner pages/label_new.webp": {
-    "file": "assets/label_new-jvMvoMsM.webp",
-    "src": "storage/app/public/images/inner pages/label_new.webp"
   }
 }

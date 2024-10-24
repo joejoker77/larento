@@ -25,7 +25,7 @@
         "imask": "^7.6.1",
         "nouislider": "^15.8.1",
         "sortablejs": "^1.15.2",
-        "sweetalert2": "^11.12.4",
+        "sweetalert2-neutral": "^11.14.1-neutral-fix6",
         "swiper": "^11.1.10",
         "video.js": "^8.17.3"
     }
