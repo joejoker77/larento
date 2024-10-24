@@ -26,3 +26,4 @@ storage/docker
 docker/nginx/ssl
 public_html
 package-lock.json
+public/build/manifest.json
