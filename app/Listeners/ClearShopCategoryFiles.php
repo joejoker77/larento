@@ -9,16 +9,13 @@ use App\Events\ShopCategoryOnDelete;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 
 /**
  *
  */
-class ClearShopCategoryFiles implements ShouldQueue
+class ClearShopCategoryFiles
 {
-    use InteractsWithQueue;
 
     /**
      * @param ShopCategoryOnDelete $event

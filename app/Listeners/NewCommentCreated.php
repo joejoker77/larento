@@ -6,13 +6,9 @@ namespace App\Listeners;
 use App\Events\NewComment;
 use App\Mail\Shop\NewCommentToAdmin;
 use Illuminate\Contracts\Mail\Mailer;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueueAfterCommit;
 
-class NewCommentCreated implements ShouldQueueAfterCommit
+class NewCommentCreated
 {
-
-    use InteractsWithQueue;
 
     private Mailer $mailer;
 

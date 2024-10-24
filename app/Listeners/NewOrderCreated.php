@@ -5,13 +5,9 @@ namespace App\Listeners;
 use App\Events\NewOrder;
 use App\Mail\Shop\NewOrderToAdmin;
 use Illuminate\Contracts\Mail\Mailer;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueueAfterCommit;
 
-class NewOrderCreated implements ShouldQueueAfterCommit
+class NewOrderCreated
 {
-
-    use InteractsWithQueue;
 
     private Mailer $mailer;
 
