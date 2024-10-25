@@ -144,7 +144,8 @@ if (!function_exists('format_phones')) {
             $phoneNumber  = str_replace('+7', '8', $phone);
             $formatNumber = substr($phoneNumber, 0, 1).' '.'('.substr($phoneNumber, 1, 3).') '.substr($phoneNumber, 4, 3).' '.substr($phoneNumber,7,2).' '.substr($phoneNumber, 9, 2);
             $phoneLink = 'tel:'.$phone;
-            $result[] = ['phone' => $formatNumber, 'link' => $phoneLink];
+            $phoneWhatsAppLink = 'https://wa.me/'.$phone;
+            $result[] = ['phone' => $formatNumber, 'link' => $phoneLink, 'whatsAppLink' => $phoneWhatsAppLink];
         }
         return $result;
     }
