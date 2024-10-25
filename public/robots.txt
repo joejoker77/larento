@@ -1,6 +1,6 @@
 User-agent: Yandex
 Disallow: /admin/
-Disallow: /shop/filter/
+Disallow: /shop/filter*
 Clean-param: page
 Clean-param: sort
 Clean-param: per-page
@@ -8,7 +8,7 @@ Sitemap: https://larento.ru/sitemap.xml
 
 User-agent: *
 Disallow: /admin/
-Disallow: /shop/filter/
+Disallow: /shop/filter*
 Clean-param: page
 Clean-param: sort
 Clean-param: per-page
