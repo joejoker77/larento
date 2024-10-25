@@ -237,7 +237,7 @@ blockquote:before {
     font-weight: 500;
     background-color: #242424;
     color: #bebebe;
-    font-size: 7.5pt;
+    font-size: 8pt;
     padding: toRem(7px) toRem(10px) toRem(6px);
 
     .left {
@@ -247,16 +247,27 @@ blockquote:before {
         }
     }
     @include media-breakpoint-up(lg) {
+        font-size: 8.5pt;
+        padding: toRem(3px) toRem(22px);
+    }
+
+    @include media-breakpoint-up(xl) {
         font-size: 11pt;
         padding: toRem(3px) toRem(22px);
     }
 
     .separator {
-        width: toRem(14px);
+        width: 50%;
         height: toRem(1px);
         background-color: #a3a3a3;
         margin: 0 toRem(15px);
 
+        @include media-breakpoint-up(sm) {
+            width: toRem(14px);
+        }
+        @include media-breakpoint-up(md) {
+            width: 0;
+        }
         @include media-breakpoint-up(lg) {
             width: toRem(36px);
         }

@@ -37,7 +37,7 @@
 <div class="container p-0 site-wrapper @if(Route::current()->getName() === 'home') main @endif">
     <header>
         <div class="header-top d-flex flex-row justify-content-between">
-            <div class="left d-flex flex-row justify-content-between justify-content-lg-start align-items-center">
+            <div class="left d-flex flex-column flex-sm-row justify-content-between justify-content-lg-start align-items-center">
                 <div class="header-top_company-address">{{ $settings['address'] ?? env('APP_ADDRESS') }}</div>
                 <div class="separator"></div>
                 <div class="header-top_clock-working">{{ $settings['work_time'] ?? env('APP_WORK_TIME') }}</div>
