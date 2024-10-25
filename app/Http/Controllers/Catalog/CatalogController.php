@@ -74,6 +74,7 @@ class CatalogController extends Controller
                 $this->meta->setTitle($product->meta['title']);
                 $this->meta->setDescription($product->meta['description']);
             }
+            $settings['canonical'] = $product->canonical;
             return view('shop.products.show', compact('category', 'categories', 'product', 'products', 'settings'));
         }
     }

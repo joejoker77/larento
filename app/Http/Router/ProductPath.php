@@ -75,11 +75,15 @@ class ProductPath implements UrlRoutable
             }
         } while (!empty($slug) && !empty($next));
 
+        if ($product && $category) {
+            $product->canonical = route('catalog.index',product_path(Category::find($product->category_id), $product));
+        }
+
         if (
             !empty($chunks) ||
             ($category && !$category->published) ||
             ($product && !$product->isActive()) ||
-            ($product && $category && $product->category_id !== $category->id)
+            ($product && $category && $product->category_id !== $category->id && !in_array($category->id, $product->categories->pluck('id')->toArray()))
         ) {
             abort(404);
         }
