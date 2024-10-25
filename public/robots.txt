@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Disallow: /filter/
+Disallow: /shop/filter/
 Clean-param: page
 Clean-param: sort
 Clean-param: per-page
@@ -9,7 +9,7 @@ Clean-param: per-page
 User-agent: Yandex
 Allow: /
 Disallow: /admin/
-Disallow: /filter/
+Disallow: /shop/filter/
 Clean-param: page
 Clean-param: sort
 Clean-param: per-page
