@@ -7,6 +7,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/build/manifest.json">
     {!! Meta::toHtml() !!}
+    @if($settings['canonical'] && $settings['canonical'] !== url()->current())
+        <meta name="robots" content="noindex" />
+    @endif
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <meta name="yandex-verification" content="d3f4ab31cc7e1109" />
