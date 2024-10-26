@@ -23,6 +23,11 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function showLoginForm($confirmPhone = false): View
+    {
+        return view('auth.login', compact('confirmPhone'));
+    }
+
     /**
      * @throws ValidationException
      */
