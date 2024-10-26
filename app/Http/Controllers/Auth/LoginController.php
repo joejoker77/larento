@@ -23,16 +23,13 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginForm($confirmPhone = false): View
-    {
-        return view('auth.login', compact('confirmPhone'));
-    }
-
     /**
      * @throws ValidationException
      */
     public function login(LoginRequest $request)
     {
+        $authenticate = null;
+
         /** @var User $user */
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
@@ -47,21 +44,6 @@ class LoginController extends Controller
                 'password' => 'required|string|min:6',
             ]);
             $authenticate = Auth::attempt($request->only(['email', 'password']), $request->filled('remember'));
-        } else {
-
-            $request->validateWithBag('login', [
-                'email'    => 'required|string|phone:RU|max:16',
-                'password' => 'required|string|min:6',
-            ]);
-            $login = "+".preg_replace("/[^0-9]/", '', $login);
-
-            $userProfile = UserProfile::where('phone', $login)->first();
-            if (!$userProfile || !$userProfile->user) {
-                return back()->with('error', 'Пользователь с таким номером телефона не найден');
-            }
-
-            $authenticate = Hash::check($request->get('password'), $userProfile->user->password) &&
-                Auth::loginUsingId($userProfile->user->id, $request->filled('remember'));
         }
 
         if ($authenticate) {
@@ -69,15 +51,10 @@ class LoginController extends Controller
             $this->clearLoginAttempts($request);
             $user = Auth::user();
 
-            if (!filter_var($login, FILTER_VALIDATE_EMAIL) && !$user->userProfile->isPhoneVerified()) {
-                $user->verifyByPhone();
-            }
-
             if ($user->isWait() || (filter_var($login, FILTER_VALIDATE_EMAIL) && $user->email && !$user->isVerifyEmail())) {
                 Auth::logout();
                 return back()->with('error', 'Ваш email не подтвержден. На указанный вами адрес, мы выслали письмо со ссылкой на подтверждение почтового ящика. Пожалуйста, перейдите по этой ссылке.');
             }
-
             return redirect()->intended(route('home'));
         }
 
