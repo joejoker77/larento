@@ -28,3 +28,5 @@ public_html
 package-lock.json
 public/build/manifest.json
 public/sitemap.xml
+database/factories/*
+database/seeders/DatabaseSeeder.php
