@@ -171,6 +171,16 @@ class Product extends Model
         }
         return null;
     }
+    public function getMainImageAlt($index = 0):null|string
+    {
+        /** @var Photo $photo */
+        $photos = $this->photos->toArray();
+        if (!empty($photos[$index])) {
+            $photo = $photos[$index];
+            return $photo['alt_tag'];
+        }
+        return null;
+    }
 
     public function isActive():bool
     {

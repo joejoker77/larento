@@ -88,7 +88,7 @@
                     @foreach($category->photos as $image)
                         <div class="image-item">
                             <div class="wrapper-image" data-photo-id="{{ $image->id }}" data-photo-owner="blog-category" data-category-id="{{ $category->id }}">
-                                <img src="{{ asset($image->getPhoto('small')) }}" alt="{{ $image['alt'] }}">
+                                <img src="{{ asset($image->getPhoto('small')) }}" alt="{{ $image['alt'] }} @if($image['alt']) маленькое @endif">
                             </div>
                             <div class="image-control btn-group">
                                 <form action="{{ route('admin.blog.categories.photo.up', [$category,$image]) }}" method="POST" class="btn btn-secondary">

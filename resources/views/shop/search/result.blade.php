@@ -50,7 +50,7 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                                             @foreach($product->photos as $photo)
                                                 <div class="product_item-image swiper-slide">
                                                     <a href="{{ route('catalog.index',product_path($product->category, $product)) }}">
-                                                        <img src="{{ $photo->getPhoto('medium') }}" alt="{{ $photo->alt_tag }}">
+                                                        <img src="{{ $photo->getPhoto('medium') }}" alt="{{ $photo->alt_tag }} @if($photo->alt_tag) размер средний @endif">
                                                     </a>
                                                 </div>
                                             @endforeach

@@ -12,7 +12,7 @@
             <div class="col-lg-9">
                 @if($post->photos->isNotEmpty())
                     <div class="post_photo-main">
-                        <img src="{{ $post->photos->first()->getPhoto('large') }}" alt="{{$post->photos->first()->alt_tag}}">
+                        <img src="{{ $post->photos->first()->getPhoto('large') }}" alt="{{$post->photos->first()->alt_tag}} @if($post->photos->first()->alt_tag) размер большой @endif">
                     </div>
                 @endif
                 <div class="post_description mb-5">

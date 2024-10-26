@@ -13,7 +13,7 @@ use App\Entities\Site\Promotions\Promotion;
             <!-- Slides -->
             @foreach($promotions as $promotion)
                 <div class="swiper-slide">
-                    <img src="{{ asset($promotion->getImage('full')) }}" alt="{{ $promotion->photo->alt_tag }}">
+                    <img src="{{ asset($promotion->getImage('full')) }}" alt="{{ $promotion->photo->alt_tag }} @if($promotion->photo->alt_tag) полный размер @endif">
                     <div class="text-block position-absolute" style="@if($promotion->settings[Promotion::SETTINGS_POSITION_LEFT]) left:{{$promotion->settings[Promotion::SETTINGS_POSITION_LEFT]}}px; @endif @if($promotion->settings[Promotion::SETTINGS_POSITION_RIGHT]) right:{{$promotion->settings[Promotion::SETTINGS_POSITION_RIGHT]}}px; @endif @if($promotion->settings[Promotion::SETTINGS_POSITION_TOP]) top:{{$promotion->settings[Promotion::SETTINGS_POSITION_TOP]}}px; @endif @if($promotion->settings[Promotion::SETTINGS_POSITION_BOTTOM]) bottom:{{$promotion->settings[Promotion::SETTINGS_POSITION_BOTTOM]}}px; @endif @if($promotion->settings[Promotion::SETTINGS_WIDTH_TEXT_BLOCK]) width:{{$promotion->settings[Promotion::SETTINGS_WIDTH_TEXT_BLOCK]}}px; @endif">
                         @if($promotion->description) <div class="h1">{!! $promotion->description !!}</div> @endif
                         @if($promotion->description_two) <div class="h2">{!! $promotion->description_two !!}</div> @endif

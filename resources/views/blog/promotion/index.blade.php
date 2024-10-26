@@ -21,7 +21,7 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                         <div class="d-flex flex-nowrap flex-column flex-lg-row justify-content-start gap-4 w-100">
                             <div class="promotion_item-head d-block d-lg-none">{!! $promotion->title !!}</div>
                             <div class="promotion_item-image">
-                                <img src="{{ asset($promotion->getImage('medium')) }}" alt="{{ $promotion->photo->alt_tag }}">
+                                <img src="{{ asset($promotion->getImage('medium')) }}" alt="{{ $promotion->photo->alt_tag }} @if($promotion->photo->alt_tag) размер средний @endif">
                             </div>
                             <div class="promotion_item-info d-flex flex-column">
                                 <div class="promotion_item-head d-none d-lg-block">{!! $promotion->title !!}</div>

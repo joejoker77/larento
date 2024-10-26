@@ -10,7 +10,7 @@
             @foreach($posts->slice(0, 2) as $key => $post)
                 <div class="our-work_top">
                     <div class="our-work_image">
-                        <img src="{{ $post->getImage('medium', 1) }}" alt="{{ $post->photos[0]->alt_tag }}">
+                        <img src="{{ $post->getImage('medium', 1) }}" alt="{{ $post->getImageAlt(1) }} @if($post->getImageAlt(1)) размер средний @endif">
                     </div>
                     <div class="our-work_info">
                         <div class="catalog-start_item-cat-title">Опубликовано: {{ $intlFormatter->format($post->created_at) }}</div>
@@ -23,7 +23,7 @@
         @foreach($posts->slice(2, 1) as $key => $post)
             <div class="our-work_center">
                 <div class="our-work_image">
-                    <img src="{{ $post->getImage('medium', 1) }}" alt="{{ $post->photos[0]->alt_tag }}">
+                    <img src="{{ $post->getImage('medium', 1) }}" alt="{{ $post->getImageAlt(1) }} @if($post->getImageAlt(1)) размер средний @endif">
                 </div>
                 <div class="our-work_info">
                     <div class="catalog-start_item-cat-title">Опубликовано: {{ $intlFormatter->format($post->created_at) }}</div>
@@ -36,7 +36,7 @@
             @foreach($posts->slice(3, 2) as $key => $post)
                 <div class="our-work_top">
                     <div class="our-work_image">
-                        <img src="{{ $post->getImage('medium', 1) }}" alt="{{ $post->photos[0]->alt_tag }}">
+                        <img src="{{ $post->getImage('medium', 1) }}" alt="{{ $post->getImageAlt(1) }} @if($post->getImageAlt(1)) размер средний @endif">
                     </div>
                     <div class="our-work_info">
                         <div class="catalog-start_item-cat-title">Опубликовано: {{ $intlFormatter->format($post->created_at) }}</div>

@@ -8,7 +8,7 @@
                 <div class="catalog-start_item position-relative">
                     <div class="label @if($product->isHit())hit @endif @if($product->isNew())new @endif"></div>
                     <div class="catalog-start_item-img position-relative">
-                        <img src="{{ $product->getMainImage('thumb') }}" alt="пример товара">
+                        <img src="{{ $product->getMainImage('thumb') }}" alt="{{ $product->getMainImageAlt() }} @if($product->getMainImageAlt()) размер маленький @endif">
                         <a href="{{ route('catalog.index', product_path($product->category, $product)) }}" class="stretched-link"></a>
                     </div>
                     <div class="catalog-start_item-info d-flex flex-column">

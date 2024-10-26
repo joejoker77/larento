@@ -11,7 +11,7 @@
                             @php /** @var App\Entities\Shop\Photo $photo */ @endphp
                             @foreach($product->photos as $photo)
                                 <div class="swiper-slide full">
-                                    <img src="{{ $photo->getPhoto('medium') }}" alt="{{ $photo->alt_tag }}">
+                                    <img src="{{ $photo->getPhoto('medium') }}" alt="{{ $photo->alt_tag }} @if($photo->alt_tag) размер средний @endif">
                                 </div>
                             @endforeach
                         </div>
@@ -31,7 +31,7 @@
                             <div class="swiper-wrapper">
                                 @foreach($product->photos as $photo)
                                     <div class="swiper-slide thumb">
-                                        <img src="{{ $photo->getPhoto('small') }}" alt="{{ $photo->alt_tag }}">
+                                        <img src="{{ $photo->getPhoto('small') }}" alt="{{ $photo->alt_tag }} @if($photo->alt_tag) размер маленький @endif">
                                     </div>
                                 @endforeach
                             </div>

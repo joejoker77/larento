@@ -116,9 +116,19 @@ class Post extends Model
 
     public function getImage($size, $number):null|string
     {
-        $photo = $this->photos[$number-1];
+        if ($this->photos[$number-1]) {
+            return 'storage/' . $this->photos[$number-1]->path . $size . '_' . $this->photos[$number-1]->name;
+        }
 
-        return 'storage/' . $photo->path . $size . '_' . $photo->name;
+        return null;
+    }
+
+    public function getImageAlt($number):null|string
+    {
+        if ($this->photos[$number-1]) {
+            return $this->photos[$number-1]->alt_tag;
+        }
+        return null;
     }
 
     public function getRouteKeyName(): string

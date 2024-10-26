@@ -13,7 +13,7 @@
                 @endisset
             </div>
             <div class="main-image">
-                <img src="{{asset('storage/images/home/main-image.jpg')}}" alt="главная картинка сайта">
+                <img src="{{asset('storage/images/home/main-image.jpg')}}" alt="изображение для главного текста сайта">
             </div>
         </div>
     </section>

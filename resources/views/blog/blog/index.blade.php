@@ -15,7 +15,7 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
             <div class="col-lg-9 mb-5">
                 @if($category->photos->count() == 1)
                     <div class="category_photo-main mx-md-auto text-center mb-3 mb-lg-5">
-                        <img src="{{ $category->getMainImage('medium') }}" alt="{{ $category->photos->first()->alt_tag }}">
+                        <img src="{{ $category->getMainImage('medium') }}" alt="{{ $category->photos->first()->alt_tag }} @if($category->photos->first()->alt_tag) размер средний @endif">
                     </div>
                 @endif
                 {!! $category->description !!}
