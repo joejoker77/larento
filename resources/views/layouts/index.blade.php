@@ -143,7 +143,8 @@
                         @endforeach
                     @endisset
                 </div>
-                <div class="footer-top_clock-working">{{ $settings['work_time'] ?? env('APP_WORK_TIME') }}</div>
+                @php $work_time = $settings['work_time'] ?? env('APP_WORK_TIME');if (strpbrk($work_time, ',')) {$work_time = explode(',', $work_time);}@endphp
+                <div class="footer-top_clock-working">@if(is_array($work_time)) @foreach($work_time as $i => $time) {{ $time }} @if($i+1 < count($work_time))<br>@endif @endforeach @else {{ $work_time }} @endif</div>
                 <div class="footer-top_email"><a href="mailto:info@larento.ru">{{ $settings['emails'][0] ?? env('MAIL_FROM_ADDRESS') }}</a></div>
             </div>
         </div>

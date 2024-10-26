@@ -1830,13 +1830,13 @@ footer {
         }
     }
     &_contacts {
-        min-width: 180px;
+        width: 180px;
 
         @include media-breakpoint-down(lg) {
-            min-width: 220px;
+            width: 220px;
         }
         @include media-breakpoint-up(xl) {
-            min-width: 220px;
+            width: 220px;
         }
     }
 }
