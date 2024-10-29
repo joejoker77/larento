@@ -40,7 +40,7 @@
                     </div>
                     <div class="our-work_info">
                         <div class="catalog-start_item-cat-title">Опубликовано: {{ $intlFormatter->format($post->created_at) }}</div>
-                        <div class="catalog-start_item-title">элен мадера</div>
+                        <div class="catalog-start_item-title">{{$post->title}}</div>
                     </div>
                     <a href="{{ route('blog.index', post_path($post->category, $post)) }}" class="stretched-link"></a>
                 </div>

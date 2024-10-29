@@ -17,6 +17,7 @@ class PortfolioModule extends Component
                 ->pluck('id')->toArray())
             ->with(['photos', 'category'])
             ->active()
+            ->limit(5)
             ->get();
 
         return view('components.portfolio-module', compact('posts'));
