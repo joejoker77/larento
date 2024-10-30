@@ -17,6 +17,7 @@ class PortfolioModule extends Component
                 ->pluck('id')->toArray())
             ->with(['photos', 'category'])
             ->active()
+            ->orderBy('sort', 'desc')
             ->limit(5)
             ->get();
 
