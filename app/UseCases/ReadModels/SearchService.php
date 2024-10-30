@@ -39,6 +39,7 @@ class SearchService
                     ->toArray())
                 ->with(['category', 'values', 'photos', 'commentaries'])
                 ->offset(($page-1) * $perPage)
+                ->orderBy('id', 'desc')
                 ->limit($perPage);
 
             $totalCount = Product::active()->where('category_id', $category->id)
