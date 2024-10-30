@@ -46,7 +46,7 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                     <div class="row product-sort mb-3 px-2">
                         <div class="form-group input-group-sm">
                             <select id="inputSort" onchange="location = this.value;" class="form-control mx-auto mx-sm-0" name="sort" aria-label="Сортировка">
-                                <option>Сортировать по</option>
+                                <option value="{{url()->current()}}">Сортировать по</option>
                                 <option value="{{request()->fullUrlWithQuery(['sort' => 'name'])}}" @if(request('sort') == 'name') selected @endif>Имени А-Я</option>
                                 <option value="{{request()->fullUrlWithQuery(['sort' => '-name'])}}" @if(request('sort') == '-name') selected @endif>Имени Я-А</option>
                                 <option value="{{request()->fullUrlWithQuery(['sort' => '-hit'])}}" @if(request('sort') == '-hit') selected @endif>Сначала хиты продаж</option>
