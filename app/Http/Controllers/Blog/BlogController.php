@@ -38,7 +38,7 @@ class BlogController extends Controller
         } else if ($path->category) {
 
             $category = $path->category;
-            $posts    = $category->posts()->paginate(5, ['*'], 'posts');
+            $posts    = $category->posts()->orderBy('id', 'desc')->paginate(5, ['*'], 'posts');
 
             $this->meta->setTitle($category->meta['title']);
             $this->meta->setDescription($category->meta['description']);
