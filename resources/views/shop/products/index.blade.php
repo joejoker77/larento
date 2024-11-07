@@ -34,6 +34,7 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                     </div>
                 @endforeach
             </div>
+            <div class="category-info mt-5">{!! $category->description !!}</div>
         @else
         <div class="d-flex justify-content-between flex-nowrap">
             <x-filter position="left" currentCategoryId="{{ $category->id }}" />
