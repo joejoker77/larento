@@ -345,7 +345,7 @@ if (mainBanner) {
     new Swiper(mainBanner, {
         loop:true,
         height:640,
-      //  autoplay: {delay: 5000},
+        autoplay: {delay: 5000},
         navigation: {nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev'},
         pagination: {el:'.swiper-pagination',clickable: true},
         modules: [Navigation, Autoplay, Pagination]
