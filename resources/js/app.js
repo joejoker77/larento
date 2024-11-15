@@ -190,7 +190,7 @@ if (modalButton.length > 0) {
             subject      = event.target.tagName === 'INPUT' ? event.target.value : event.target.textContent;
             product_name = event.target.tagName === 'INPUT' ? button.closest('.info') ?
                 button.closest('.info').querySelector('h3.h3').textContent :
-                button.dataset.productName : document.getElementById('postPage').querySelector('h1').textContent;
+                button.dataset.productName : document.querySelector('#postPage h1').textContent;
 
             let title = subject+': '+product_name;
 
