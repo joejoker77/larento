@@ -3716,6 +3716,13 @@ aside {
                 margin-right: toRem(20px);
             }
         }
+        main-gallery {
+            margin: 0 toRem(-10px);
+            @include media-breakpoint-up(md) {
+                padding-right: toRem(20px);
+                margin: 0;
+            }
+        }
     }
     &.blog {
         p {
