@@ -3,7 +3,7 @@
 namespace App\Entities\Blog;
 
 
-use Throwable;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use App\Entities\Shop\Photo;
 use Laravel\Scout\Searchable;
@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 
 /**
  * @property int $id
@@ -31,7 +33,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property Collection $photos
  * @property Collection $posts
  */
-class Category extends Model
+class Category extends Model implements Sitemapable
 {
     use NodeTrait, WithMediaGallery;
     use Searchable {
@@ -91,6 +93,11 @@ class Category extends Model
 //        static::deleting(function ($category) {
 //            Event::dispatch(ShopCategoryOnDelete::class, $category);
 //        });
+    }
+
+    public function toSitemapTag(): Url|string|array
+    {
+        return Url::create(route('catalog.index',post_path($this, null)));
     }
 
     public function toSearchableArray(): array

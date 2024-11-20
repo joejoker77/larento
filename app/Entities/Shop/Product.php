@@ -3,15 +3,18 @@
 namespace App\Entities\Shop;
 
 
-use Illuminate\Support\Facades\Cache;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use App\Traits\WithMediaGallery;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sitemap\Contracts\Sitemapable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Sitemap\Tags\Url;
 
 /**
  * @property integer $id
@@ -27,6 +30,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property boolean $display_home
  * @property float $rating
  * @property array $meta
+ * @property string created_at
+ * @property string updated_at
  *
 
  * @property Category $category
@@ -40,7 +45,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method Builder canBuy()
  *
  */
-class Product extends Model
+class Product extends Model implements Sitemapable
 {
 
     use HasFactory, WithMediaGallery;
@@ -106,6 +111,12 @@ class Product extends Model
             $category = $model->category;
             Cache::forget('products_search_'.$category->id);
         });
+    }
+
+    public function toSitemapTag(): Url|string|array
+    {
+        return Url::create(route('catalog.index',product_path($this->category, $this)))
+            ->setLastModificationDate(Carbon::create($this->updated_at));
     }
 
     public function getRouteKeyName(): string

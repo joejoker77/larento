@@ -22,6 +22,7 @@
         "laravel/ui": "^4.5",
         "pbmedia/laravel-ffmpeg": "^8.5",
         "php-ffmpeg/php-ffmpeg": "^1.2",
+        "spatie/laravel-sitemap": "^7.2",
         "staudenmeir/laravel-adjacency-list": "^1.22"
     },
     "require-dev": {

@@ -2,6 +2,7 @@
 
 namespace App\Entities\Blog;
 
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use App\Entities\Shop\Photo;
 use App\Traits\WithMediaGallery;
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 
 /**
  *
@@ -28,7 +31,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property Category $category
  * @property Category[] $categories
  */
-class Post extends Model
+class Post extends Model implements Sitemapable
 {
     use WithMediaGallery;
 
@@ -76,6 +79,12 @@ class Post extends Model
         static::updating(function ($model) {
             $model->slug = Str::slug($model->title);
         });
+    }
+
+    public function toSitemapTag(): Url|string|array
+    {
+        return Url::create(route('catalog.index',post_path($this->category()->first(), $this)))
+            ->setLastModificationDate(Carbon::create($this->updated_at));
     }
 
     public static function statusList(): array

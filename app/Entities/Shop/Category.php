@@ -3,6 +3,9 @@
 namespace App\Entities\Shop;
 
 
+use Carbon\Carbon;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 use Throwable;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
@@ -36,7 +39,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property Collection $products
  * @property Collection $filters
  */
-class Category extends Model
+class Category extends Model implements Sitemapable
 {
     use NodeTrait, WithMediaGallery;
     use Searchable {
@@ -86,6 +89,11 @@ class Category extends Model
         static::deleting(function ($category) {
             Event::dispatch(ShopCategoryOnDelete::class, $category);
         });
+    }
+
+    public function toSitemapTag(): Url|string|array
+    {
+        return Url::create(route('catalog.index',product_path($this, null)));
     }
 
     public function toSearchableArray(): array
