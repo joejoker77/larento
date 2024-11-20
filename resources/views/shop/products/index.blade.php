@@ -36,7 +36,7 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                 @endforeach
             </div>
             @if($category)
-                <div class="category-info mt-5">{!! $category->description !!}</div>
+                <div class="category-info mt-5 pt-5 border-top">{!! $category->description !!}</div>
             @endif
         @else
         <div class="d-flex justify-content-between flex-nowrap">
