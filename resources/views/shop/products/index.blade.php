@@ -10,6 +10,7 @@
 use App\Entities\Shop\Product;
 
 $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDateFormatter::SHORT); $intlFormatter->setPattern('d MMMM Y');
+
 ?>
 @extends('layouts.index')
 @section('content')
@@ -34,7 +35,9 @@ $intlFormatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::SHORT, IntlDa
                     </div>
                 @endforeach
             </div>
-            <div class="category-info mt-5">{!! $category->description !!}</div>
+            @if($category)
+                <div class="category-info mt-5">{!! $category->description !!}</div>
+            @endif
         @else
         <div class="d-flex justify-content-between flex-nowrap">
             <x-filter position="left" currentCategoryId="{{ $category->id }}" />
