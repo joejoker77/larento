@@ -1238,6 +1238,8 @@ section#ourWork {
     &_user {
         &-avatar {
             margin-right: toRem(15px);
+            border-radius: 50%;
+            overflow: hidden;
         }
         &-info {
             margin-bottom: toRem(26px);
