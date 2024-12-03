@@ -33,7 +33,7 @@
                         <div class="swiper-button reviews_swiper-button-prev">‹</div>
                         <div class="swiper-button reviews_swiper-button-next">›</div>
                         <div class="reviews_all-button">
-                            <a href="{{$reviews['link']}}" class="btn btn-brown">Все отзывы на яндексе</a>
+                            <a href="{{$reviews['link']}}" target="_blank" rel="noopener noreferrer" class="btn btn-brown">Все отзывы на яндексе</a>
                         </div>
                     </div>
                 </div>
