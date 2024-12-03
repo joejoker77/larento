@@ -18,151 +18,59 @@
         </div>
     </section>
     <x-portfolio-module />
-{{--    <section id="reviews" class="reviews">--}}
-{{--        <div class="d-flex flex-row justify-content-between">--}}
-{{--            <div class="reviews_info d-flex flex-column">--}}
-{{--                <h2 class="decor-head-three">--}}
-{{--                    <span>larento</span>--}}
-{{--                    отзывы--}}
-{{--                </h2>--}}
-{{--                <div class="reviews_text">--}}
-{{--                    <p>Здесь использовать текст рыбу, с количеством знаков без пробелов до 600-700. В данном блоке нужно использовать какое либо изображение, подчеркивающее общую стилистику сайта.</p>--}}
-{{--                </div>--}}
-{{--                <div class="reviews_buttons d-flex flex-row">--}}
-{{--                    <div class="swiper-button reviews_swiper-button-prev">‹</div>--}}
-{{--                    <div class="swiper-button reviews_swiper-button-next">›</div>--}}
-{{--                    <div class="reviews_all-button">--}}
-{{--                        <a href="#" class="btn btn-brown">Все отзывы на яндексе</a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="reviews_swiper">--}}
-{{--                <div class="swiper-wrapper">--}}
-{{--                    <!-- Slides -->--}}
-{{--                    <div class="swiper-slide reviews_swiper-slide">--}}
-{{--                        <div class="reviews_content d-flex flex-column">--}}
-{{--                            <div class="reviews_user-info d-flex flex-row">--}}
-{{--                                <div class="reviews_user-avatar">--}}
-{{--                                    <img src="{{asset('storage/images/home/avatar-svgrepo-com 1.png')}}" alt="аватар пользователя">--}}
-{{--                                </div>--}}
-{{--                                <div class="reviews_user-rating-name d-flex flex-column">--}}
-{{--                                    <div class="reviews_user-name">валерий</div>--}}
-{{--                                    <div class="rating-holder">--}}
-{{--                                        <div class="c-rating c-rating--regular" data-rating-value="4.25">--}}
-{{--                                            <span>1</span>--}}
-{{--                                            <span>2</span>--}}
-{{--                                            <span>3</span>--}}
-{{--                                            <span>4</span>--}}
-{{--                                            <span>5</span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="reviews_comment">--}}
-{{--                                <p>Спасибо большое менеджеру Ирине за оперативное и недорогое решение по кухне. Идеально вписались в бюджет и дизайн, сроки порадовали - собрали и изготовили очень быстро. Рекомендую!</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide reviews_swiper-slide">--}}
-{{--                        <div class="reviews_content d-flex flex-column">--}}
-{{--                            <div class="reviews_user-info d-flex flex-row">--}}
-{{--                                <div class="reviews_user-avatar">--}}
-{{--                                    <img src="{{asset('storage/images/home/avatar-svgrepo-com 1.png')}}" alt="аватар пользователя">--}}
-{{--                                </div>--}}
-{{--                                <div class="reviews_user-rating-name d-flex flex-column">--}}
-{{--                                    <div class="reviews_user-name">валерий</div>--}}
-{{--                                    <div class="rating-holder">--}}
-{{--                                        <div class="c-rating c-rating--regular" data-rating-value="4.25">--}}
-{{--                                            <span>1</span>--}}
-{{--                                            <span>2</span>--}}
-{{--                                            <span>3</span>--}}
-{{--                                            <span>4</span>--}}
-{{--                                            <span>5</span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="reviews_comment">--}}
-{{--                                <p>Спасибо большое менеджеру Ирине за оперативное и недорогое решение по кухне. Идеально вписались в бюджет и дизайн, сроки порадовали - собрали и изготовили очень быстро. Рекомендую!</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide reviews_swiper-slide">--}}
-{{--                        <div class="reviews_content d-flex flex-column">--}}
-{{--                            <div class="reviews_user-info d-flex flex-row">--}}
-{{--                                <div class="reviews_user-avatar">--}}
-{{--                                    <img src="{{asset('storage/images/home/avatar-svgrepo-com 1.png')}}" alt="аватар пользователя">--}}
-{{--                                </div>--}}
-{{--                                <div class="reviews_user-rating-name d-flex flex-column">--}}
-{{--                                    <div class="reviews_user-name">валерий</div>--}}
-{{--                                    <div class="rating-holder">--}}
-{{--                                        <div class="c-rating c-rating--regular" data-rating-value="4.25">--}}
-{{--                                            <span>1</span>--}}
-{{--                                            <span>2</span>--}}
-{{--                                            <span>3</span>--}}
-{{--                                            <span>4</span>--}}
-{{--                                            <span>5</span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="reviews_comment">--}}
-{{--                                <p>Спасибо большое менеджеру Ирине за оперативное и недорогое решение по кухне. Идеально вписались в бюджет и дизайн, сроки порадовали - собрали и изготовили очень быстро. Рекомендую!</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide reviews_swiper-slide">--}}
-{{--                        <div class="reviews_content d-flex flex-column">--}}
-{{--                            <div class="reviews_user-info d-flex flex-row">--}}
-{{--                                <div class="reviews_user-avatar">--}}
-{{--                                    <img src="{{asset('storage/images/home/avatar-svgrepo-com 1.png')}}" alt="аватар пользователя">--}}
-{{--                                </div>--}}
-{{--                                <div class="reviews_user-rating-name d-flex flex-column">--}}
-{{--                                    <div class="reviews_user-name">валерий</div>--}}
-{{--                                    <div class="rating-holder">--}}
-{{--                                        <div class="c-rating c-rating--regular" data-rating-value="4.25">--}}
-{{--                                            <span>1</span>--}}
-{{--                                            <span>2</span>--}}
-{{--                                            <span>3</span>--}}
-{{--                                            <span>4</span>--}}
-{{--                                            <span>5</span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="reviews_comment">--}}
-{{--                                <p>Спасибо большое менеджеру Ирине за оперативное и недорогое решение по кухне. Идеально вписались в бюджет и дизайн, сроки порадовали - собрали и изготовили очень быстро. Рекомендую!</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide reviews_swiper-slide">--}}
-{{--                        <div class="reviews_content d-flex flex-column">--}}
-{{--                            <div class="reviews_user-info d-flex flex-row">--}}
-{{--                                <div class="reviews_user-avatar">--}}
-{{--                                    <img src="{{asset('storage/images/home/avatar-svgrepo-com 1.png')}}" alt="аватар пользователя">--}}
-{{--                                </div>--}}
-{{--                                <div class="reviews_user-rating-name d-flex flex-column">--}}
-{{--                                    <div class="reviews_user-name">валерий</div>--}}
-{{--                                    <div class="rating-holder">--}}
-{{--                                        <div class="c-rating c-rating--regular" data-rating-value="4.25">--}}
-{{--                                            <span>1</span>--}}
-{{--                                            <span>2</span>--}}
-{{--                                            <span>3</span>--}}
-{{--                                            <span>4</span>--}}
-{{--                                            <span>5</span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="reviews_comment">--}}
-{{--                                <p>Спасибо большое менеджеру Ирине за оперативное и недорогое решение по кухне. Идеально вписались в бюджет и дизайн, сроки порадовали - собрали и изготовили очень быстро. Рекомендую!</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+    @if($reviews)
+        <section id="reviews" class="reviews">
+            <div class="d-flex flex-row justify-content-between">
+                <div class="reviews_info d-flex flex-column">
+                    <h2 class="decor-head-three">
+                        <span>larento</span>
+                        отзывы
+                    </h2>
+                    <div class="reviews_text">
+                        <p>Ваши отзывы — это основа нашего развития. Мы ценим каждый голос и уверены, что с вашей помощью сможем стать гораздо лучше. Каждый комментарий предоставляет нам новые возможности для улучшения и внедрения изменений.</p>
+                    </div>
+                    <div class="reviews_buttons d-flex flex-row">
+                        <div class="swiper-button reviews_swiper-button-prev">‹</div>
+                        <div class="swiper-button reviews_swiper-button-next">›</div>
+                        <div class="reviews_all-button">
+                            <a href="{{$reviews['link']}}" class="btn btn-brown">Все отзывы на яндексе</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="reviews_swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        @foreach($reviews['reviews'] as $review)
+                            <div class="swiper-slide reviews_swiper-slide">
+                                <div class="reviews_content d-flex flex-column">
+                                    <div class="reviews_user-info d-flex flex-row">
+                                        <div class="reviews_user-avatar">
+                                            <img src="@if($review['user_icon']) {{$review['user_icon']}} @else {{asset('storage/images/home/avatar-svgrepo-com 1.png')}} @endif" alt="аватар пользователя">
+                                        </div>
+                                        <div class="reviews_user-rating-name d-flex flex-column">
+                                            <div class="reviews_user-name">{{ $review['user_name'] }}</div>
+                                            <div class="rating-holder">
+                                                <div class="c-rating c-rating--regular" data-rating-value="{{ $review['rating'] }}">
+                                                    <span>1</span>
+                                                    <span>2</span>
+                                                    <span>3</span>
+                                                    <span>4</span>
+                                                    <span>5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="reviews_comment">
+                                        <p>{{$review['comment_text']}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
     <section id="schemeWork" class="scheme-work">
         <h3>схема работы</h3>
         <div class="scheme-work_content d-flex flex-column flex-lg-row justify-content-between">

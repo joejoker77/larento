@@ -7,7 +7,7 @@ class HomeService
     /**
      * @var string
      */
-    private $link = 'https://yandex.ru/maps-reviews-widget/29142558237?comments';
+    private $link = 'https://yandex.ru/maps-reviews-widget/59570882736?comments';
 
     public function getReviews(): array|string|null
     {
@@ -40,29 +40,21 @@ class HomeService
                         $rating = $rating - $ratingNodesEmpty->count();
                     }
 
-                    $item["user_icon_class"] = 'user-icon_'.$key;
-                    $item["user_name"]       = $finder->query("//p[@class='comment__name']", $commentNode)[$key]->nodeValue;
-                    $item["comment_text"]    = $finder->query("//p[@class='comment__text']", $commentNode)[$key]->nodeValue;
-                    $item["date"]            = $finder->query("//p[@class='comment__date']", $commentNode)[$key]->nodeValue;
-                    $item["rating"]          = $rating;
-                    $item["user_role"]       = 'Знаток города';
+                    $item["user_name"]    = $finder->query("//p[@class='comment__name']", $commentNode)[$key]->nodeValue;
+                    $item["comment_text"] = $finder->query("//p[@class='comment__text']", $commentNode)[$key]->nodeValue;
+                    $item["date"]         = $finder->query("//p[@class='comment__date']", $commentNode)[$key]->nodeValue;
+                    $item["rating"]       = $rating;
 
                     $pathImage = $commentNode->getNodePath().'/div[1]/*[contains(@class, "comment__photo")]';
-                    if ($finder->query($pathImage)[0]->nodeName == 'div') {
-                        $item["user_icon"] = mb_substr($item["user_name"], 0, 1);
-                    }
-                    if ($finder->query($pathImage)[0]->nodeName == 'img') {
-                        $item["user_icon"] = $finder->query($pathImage)[0]->getAttribute('src');
-                    }
+                    $item["user_icon"] = $finder->query($pathImage)[0]->nodeName == 'img' ? $finder->query($pathImage)[0]->getAttribute('src') : null;
 
                     $reviews[] = $item;
-
                 }
                 unset($html,$item);
 
                 return [
                     'reviews' => $reviews,
-                    'link'    => 'https://yandex.ru/maps/org/29142558237/reviews/'
+                    'link'    => 'https://yandex.ru/maps/org/59570882736/reviews/'
                 ];
             } else {
                 return null;
