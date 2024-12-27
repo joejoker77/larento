@@ -18,7 +18,7 @@ use App\Entities\Site\Promotions\Promotion;
                         @if($promotion->description) <div class="h1">{!! $promotion->description !!}</div> @endif
                         @if($promotion->description_two) <div class="h2">{!! $promotion->description_two !!}</div> @endif
                     </div>
-                    @if(!$promotion->settings[Promotion::SETTINGS_HIDE_TEXT])
+                    @if((isset($promotion->settings[Promotion::SETTINGS_HIDE_TEXT]) && !$promotion->settings[Promotion::SETTINGS_HIDE_TEXT]) || !isset($promotion->settings[Promotion::SETTINGS_HIDE_TEXT]))
                         <div class="copyright">*Акция действует на все товары бренда larento представленных на нашем сайте. Колличество товаров по акции ограниченно сркоом проведения акции. Уточняйте информациию у менеджера компании.</div>
                     @endif
                 </div>
