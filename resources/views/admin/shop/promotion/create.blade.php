@@ -87,6 +87,8 @@ use \App\Entities\Site\Promotions\Promotion;
                         $settings_position_bottom  = 'settings['.Promotion::SETTINGS_POSITION_BOTTOM.']';
                         $settings_width_text_block = 'settings['.Promotion::SETTINGS_WIDTH_TEXT_BLOCK.']';
                         $settings_is_main_banner   = 'settings['.Promotion::SETTINGS_IS_MAIN_BANNER.']';
+                        $settings_hide_text        = 'settings['.Promotion::SETTINGS_HIDE_TEXT.']';
+                        $settings_sort             = 'settings['.Promotion::SETTINGS_SORT.']';
                     ?>
                     <div class="form-floating mb-3">
                         <input type="text" id="{{$settings_position_left}}" class="form-control @error($settings_position_left) is-invalid @enderror"
@@ -118,6 +120,12 @@ use \App\Entities\Site\Promotions\Promotion;
                         <label for="{{$settings_width_text_block}}">-=Ширина текстового блока=-</label>
                         @error($settings_width_text_block)<span class="invalid-feedback">{{ $message }}</span>@enderror
                     </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" id="{{$settings_sort}}" class="form-control @error($settings_sort) is-invalid @enderror"
+                               name="{{$settings_sort}}" value="{{ old($settings_sort) }}" placeholder="-=Сортировка=-">
+                        <label for="{{$settings_sort}}">-=Сортировка=-</label>
+                        @error($settings_sort)<span class="invalid-feedback">{{ $message }}</span>@enderror
+                    </div>
                     <div class="form-floating mb-3 datepicker-item">
                         <input type="text" class="datepicker-native form-control @error("expiration_start") is-invalid @enderror" name="expiration_start" id="expirationStart" value="{{ old("expiration_start") }}" placeholder="-=Дата начала действия акции=-" autocomplete="false">
                         <label for="expirationStart">-=Дата начала действия акции=-</label>
@@ -132,6 +140,12 @@ use \App\Entities\Site\Promotions\Promotion;
                         <div class="form-check p-0">
                             <input type="checkbox" name="{{$settings_is_main_banner}}" id="{{$settings_is_main_banner}}" {{ old($settings_is_main_banner) ? 'checked' : '' }} value="1">
                             <label for="{{$settings_is_main_banner}}" class="form-check-label">Показать в баннере на главной</label>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="form-check p-0">
+                            <input type="checkbox" name="{{$settings_hide_text}}" id="{{$settings_hide_text}}" {{ old($settings_hide_text) ? 'checked' : '' }} value="1">
+                            <label for="{{$settings_hide_text}}" class="form-check-label">Не показывать текст</label>
                         </div>
                     </div>
                 </div>

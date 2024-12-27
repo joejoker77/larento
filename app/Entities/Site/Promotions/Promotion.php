@@ -53,6 +53,8 @@ class Promotion extends Model
     public const SETTINGS_POSITION_BOTTOM   = 'bottom';
     public const SETTINGS_WIDTH_TEXT_BLOCK  = 'width';
     public const SETTINGS_IS_MAIN_BANNER    = 'is_main_banner';
+    public const SETTINGS_HIDE_TEXT         = 'hide_text';
+    public const SETTINGS_SORT              = 'sort';
 
     public const IMAGE_PATH = 'files/promotions/';
 
