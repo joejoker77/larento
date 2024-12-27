@@ -29,6 +29,8 @@ class PromotionRequest extends FormRequest
             "settings.top"            => "nullable|integer",
             "settings.bottom"         => "nullable|integer",
             "settings.width"          => "nullable|integer",
+            "settings.sort"           => "nullable|integer",
+            "settings.hide_text"      => "nullable|integer",
             "settings.is_main_banner" => "boolean",
             "expiration_start"        => "nullable|dateformat:d.m.Y",
             "expiration_end"          => "nullable|dateformat:d.m.Y",
