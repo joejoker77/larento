@@ -2,19 +2,17 @@
 
 namespace App\Entities\Blog;
 
-
-use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Spatie\Sitemap\Tags\Url;
 use App\Entities\Shop\Photo;
 use Laravel\Scout\Searchable;
 use Kalnoy\Nestedset\NodeTrait;
 use App\Traits\WithMediaGallery;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sitemap\Contracts\Sitemapable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Spatie\Sitemap\Contracts\Sitemapable;
-use Spatie\Sitemap\Tags\Url;
 
 /**
  * @property int $id
